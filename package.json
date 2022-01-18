@@ -1,0 +1,13 @@
+{
+  "name": "progetto_base",
+  "version": "1.0.0",
+  "description": "progetto base backend-end(node-nestjs), front-end(angular-akita)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:back": "cd backend && npm run start:dev",
+    "dev:front": "cd frontend && npm run build:watch"
+  },
+  "author": "Francesco Re",
+  "license": "ISC"
+}
