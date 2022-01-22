@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>test1 !!!</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Campo1</th>
+    </tr>
+  </thead> 
+  <tbody> 
+  <tr *ngFor="let test1 of test1s$ | async">
+    <td>{{ test1.campo1 }}</td>
+  </tr>
+</tbody>
+</table>
+  <p>Ciaooooooooooo !!!</p>
+</ion-content>
