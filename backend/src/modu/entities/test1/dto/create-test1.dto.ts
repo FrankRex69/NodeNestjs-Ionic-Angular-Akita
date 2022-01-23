@@ -5,4 +5,8 @@ export class CreateTest1Dto {
   @ApiProperty()
   @IsString()
   campo1: string;
+
+  @ApiProperty()
+  @IsString()
+  campo2: string;
 }
