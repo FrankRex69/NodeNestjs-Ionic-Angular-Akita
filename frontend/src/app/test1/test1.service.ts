@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 import { Test1Store } from './test1.store';
 import { IresponseTest1 } from '@commons/interfaces/test1.interface';
+import { environment } from '../../environments/environment';
 
 
 @Injectable()
@@ -21,9 +22,17 @@ export class Test1Service {
   getAllTest1s(): Observable<IresponseTest1[]> {
     //`${environment.apiUrl}/comune/`
     //return this.http.get<IresponseTest1[]>('/api/test1').pipe(
-    return this.http.get<IresponseTest1[]>('http://localhost:7000/Test1').pipe(
+    return this.http.get<IresponseTest1[]>(`${environment.apiUrl}/Test1/`).pipe(
       tap(test1 => {
         this.store.loadTest1s(test1, true);
+      })
+    );
+  }
+
+  deleteTest1(test1Id: string): Observable<any> {
+    return this.http.delete(`${environment.apiUrl}/Test1/${test1Id}`).pipe(
+      tap(result => {
+        this.store.remove(test1Id);
       })
     );
   }

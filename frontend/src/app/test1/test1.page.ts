@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/use-lifecycle-interface */
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { filter, switchMap } from 'rxjs/operators';
@@ -14,6 +15,9 @@ import { Test1State } from './test1.store';
 export class Test1Page implements OnInit {
 
   listTest1sSub: Subscription;
+  deleteTest1Sub: Subscription;
+  updateTest1Sub: Subscription;
+
   cstate: Test1State;
 
   test1s$: Observable<IresponseTest1[]> = this.test1Query.selectAll();
@@ -31,5 +35,27 @@ export class Test1Page implements OnInit {
       })
     ).subscribe(result => {});
   }
+
+  deleteTest1(test1Id: string) {
+    this.deleteTest1Sub = this.test1Service.deleteTest1(test1Id).subscribe(result => {
+      console.log(result);
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.listTest1sSub) {
+      this.listTest1sSub.unsubscribe();
+    }
+
+    if (this.deleteTest1Sub) {
+      this.deleteTest1Sub.unsubscribe();
+    }
+
+    if (this.updateTest1Sub) {
+      this.updateTest1Sub.unsubscribe();
+    }
+  }
+
+
 
 }

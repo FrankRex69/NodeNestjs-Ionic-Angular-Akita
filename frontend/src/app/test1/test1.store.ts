@@ -26,7 +26,6 @@ export class Test1Store extends EntityStore<Test1State> {
     }
 
     loadTest1s(test1s: IresponseTest1[], areTest1sLoaded: boolean) {
-      console.log('q222');
       this.set(test1s);
       this.update(state => ({
         ...state,

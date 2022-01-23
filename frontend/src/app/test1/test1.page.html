@@ -1,32 +1,41 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>test1 !!!</ion-title>
+    <ion-title>TEST 1</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <table class="table table-dark">
-  <thead>
-    <tr>
-      <th scope="col">Campo1</th>
-    </tr>
-  </thead> 
-  <tbody> 
-  <tr *ngFor="let test1 of test1s$ | async">
-    <td>{{ test1.campo1 }}</td>
-  </tr>
-</tbody>
-</table>
+<ion-content>  
 <ion-grid>
   <ion-row>
     <ion-col>
-      <div>1 of 3</div>
+      <div size="2">ID</div>
     </ion-col>
-    <ion-col>
-      <div>2 of 3</div>
+    <ion-col size="2">
+      <div>CAMPO 1</div>
     </ion-col>
-    <ion-col>
-      <div>3 of 3</div>
+    <ion-col size="4">      
+    </ion-col>
+    <ion-col size="2">      
+    </ion-col>
+    <ion-col size="2">      
+    </ion-col>
+  </ion-row>
+  <ion-row *ngFor="let test1 of test1s$ | async">
+    <ion-col size="2">
+      <div>{{ test1.id }}</div>
+    </ion-col>
+    <ion-col size="2">
+      <div>{{ test1.campo1 }}</div>
+    </ion-col>
+    <ion-col size="4">
+      <div>{{ test1.campo2 }}</div>
+    </ion-col>
+    <ion-col size="2"> 
+      <ion-button color="success">Update</ion-button>     
+    </ion-col>
+    <ion-col size="2"> 
+      <ion-button (click)="deleteTest1(test1.id)"color="danger">Delete</ion-button>  
+      <!-- <button (click)="deleteCourse(course.id)" class="btn btn-danger" style="margin: 5px">Delete</button>    -->
     </ion-col>
   </ion-row>
 </ion-grid>
