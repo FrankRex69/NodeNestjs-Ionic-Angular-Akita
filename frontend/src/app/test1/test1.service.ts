@@ -29,7 +29,15 @@ export class Test1Service {
     );
   }
 
-  deleteTest1(test1Id: string): Observable<any> {
+  updateTest1(test1Id: number, test1: IresponseTest1): Observable<any> {
+    return this.http.patch(`${environment.apiUrl}/Test1/${test1Id}`, test1).pipe(
+      tap(result => {
+        this.store.update(test1Id, test1);
+      })
+    );
+  }
+
+  deleteTest1(test1Id: number): Observable<any> {
     return this.http.delete(`${environment.apiUrl}/Test1/${test1Id}`).pipe(
       tap(result => {
         this.store.remove(test1Id);

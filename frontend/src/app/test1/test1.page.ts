@@ -14,6 +14,9 @@ import { Test1State } from './test1.store';
 })
 export class Test1Page implements OnInit {
 
+  test1ToBeUpdated: IresponseTest1;
+  isUpdateActivated = false;
+
   listTest1sSub: Subscription;
   deleteTest1Sub: Subscription;
   updateTest1Sub: Subscription;
@@ -36,7 +39,20 @@ export class Test1Page implements OnInit {
     ).subscribe(result => {});
   }
 
-  deleteTest1(test1Id: string) {
+  showUpdateForm(test1: IresponseTest1) {
+    this.test1ToBeUpdated = {...test1};
+    this.isUpdateActivated = true;
+  }
+
+  updateTest1(updateForm) {
+    this.updateTest1Sub = this.test1Service.updateTest1(
+      this.test1ToBeUpdated.id, updateForm.value).subscribe(result => console.log(result)
+    );
+    this.isUpdateActivated = false;
+    this.test1ToBeUpdated = null;
+  }
+
+  deleteTest1(test1Id: number) {
     this.deleteTest1Sub = this.test1Service.deleteTest1(test1Id).subscribe(result => {
       console.log(result);
     });

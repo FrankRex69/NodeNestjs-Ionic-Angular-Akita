@@ -31,12 +31,39 @@
       <div>{{ test1.campo2 }}</div>
     </ion-col>
     <ion-col size="2"> 
-      <ion-button color="success">Update</ion-button>     
+      <ion-button (click)="showUpdateForm(test1)"color="success">Update</ion-button>             
     </ion-col>
     <ion-col size="2"> 
       <ion-button (click)="deleteTest1(test1.id)"color="danger">Delete</ion-button>  
-      <!-- <button (click)="deleteCourse(course.id)" class="btn btn-danger" style="margin: 5px">Delete</button>    -->
     </ion-col>
   </ion-row>
 </ion-grid>
 </ion-content>
+<div *ngIf="isUpdateActivated" style="margin-top: 50px; margin-left: 50px;">
+  <h4>Update Test1</h4>
+  <form (ngSubmit)="updateTest1(updateForm)" #updateForm="ngForm">
+    <div class="form-group">
+      <label for="name">Test1 Campo1</label>
+      <input
+        type="text"
+        id="campo1"
+        name="campo1"
+        class="form-control"
+        required
+        [(ngModel)]="test1ToBeUpdated.campo1"
+        style="width: 400px"/>
+    </div>
+    <div class="form-group">
+      <label for="side">Campo 2</label>
+      <input
+        type="text"
+        id="campo2"
+        name="campo2"
+        class="form-control"
+        required
+        [(ngModel)]="test1ToBeUpdated.description"
+        style="width: 400px"/>
+    </div>
+    <button [disabled]="updateForm.invalid" class="btn btn-primary" type="submit">Update</button>
+  </form>
+</div>

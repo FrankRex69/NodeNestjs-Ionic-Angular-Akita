@@ -5,7 +5,7 @@ import { IresponseTest1 } from '@commons/interfaces/test1.interface';
 import { EntityStore, StoreConfig } from '@datorama/akita';
 import { EntityState } from '@datorama/akita/src/lib/types';
 
-export interface Test1State extends EntityState<IresponseTest1, string> {
+export interface Test1State extends EntityState<IresponseTest1, number> {
   areTest1sLoaded: boolean;
 }
 
