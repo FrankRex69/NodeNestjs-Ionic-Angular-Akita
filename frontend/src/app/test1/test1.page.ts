@@ -43,24 +43,25 @@ export class Test1Page implements OnInit {
   async openModal() {
     const modal = await this.modalController.create({
       component: Test1Modal,
-      componentProps: {
-        // eslint-disable-next-line quote-props
-        'paramID': 123,
-        // eslint-disable-next-line quote-props
-        'paramTitle': 'Test Title'
-      }
+      // componentProps: {
+      //   // eslint-disable-next-line quote-props
+      //   'paramID': 123,
+      //   // eslint-disable-next-line quote-props
+      //   'paramTitle': 'Test Title'
+      // }
     });
-  // -- end modal
 
-    modal.onDidDismiss().then((dataReturned) => {
-      if (dataReturned !== null) {
-        this.dataReturned = dataReturned.data;
-        //alert('Modal Sent Data :'+ dataReturned);
-      }
-    });
+    // modal.onDidDismiss().then((dataReturned) => {
+    //   if (dataReturned !== null) {
+    //     this.dataReturned = dataReturned.data;
+    //     //alert('Modal Sent Data :'+ dataReturned);
+    //   }
+    // });
 
     return await modal.present();
   }
+
+  // -- end modal
 
   ngOnInit() {
     this.listTest1sSub = this.test1Query.selectAreTest1sLoaded$.pipe(
