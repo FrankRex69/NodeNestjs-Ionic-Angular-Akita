@@ -6,6 +6,9 @@ import { IresponseTest1 } from '@commons/interfaces/test1.interface';
 import { Test1Query } from './test1.query';
 import { Test1Service } from './test1.service';
 import { Test1State } from './test1.store';
+import { ModalController } from '@ionic/angular';
+import { Test1Modal } from './test1-modal/test1-modal.component';
+
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -15,7 +18,9 @@ import { Test1State } from './test1.store';
 export class Test1Page implements OnInit {
 
   test1ToBeUpdated: IresponseTest1;
+
   isUpdateActivated = false;
+  isCreateActivated: boolean;
 
   listTest1sSub: Subscription;
   deleteTest1Sub: Subscription;
@@ -25,7 +30,36 @@ export class Test1Page implements OnInit {
 
   test1s$: Observable<IresponseTest1[]> = this.test1Query.selectAll();
 
-  constructor(private test1Service: Test1Service, private test1Query: Test1Query) {
+  dataReturned: any;
+
+  constructor(
+    private test1Service: Test1Service,
+    private test1Query: Test1Query,
+    public modalController: ModalController
+    ) {
+  }
+
+ // -- Modal
+  async openModal() {
+    const modal = await this.modalController.create({
+      component: Test1Modal,
+      componentProps: {
+        // eslint-disable-next-line quote-props
+        'paramID': 123,
+        // eslint-disable-next-line quote-props
+        'paramTitle': 'Test Title'
+      }
+    });
+  // -- end modal
+
+    modal.onDidDismiss().then((dataReturned) => {
+      if (dataReturned !== null) {
+        this.dataReturned = dataReturned.data;
+        //alert('Modal Sent Data :'+ dataReturned);
+      }
+    });
+
+    return await modal.present();
   }
 
   ngOnInit() {
@@ -37,6 +71,10 @@ export class Test1Page implements OnInit {
         }
       })
     ).subscribe(result => {});
+  }
+
+  showCreateForm() {
+    this.isCreateActivated = true;
   }
 
   showUpdateForm(test1: IresponseTest1) {
