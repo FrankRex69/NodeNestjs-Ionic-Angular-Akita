@@ -2,6 +2,7 @@
   <ion-toolbar>
     <ion-title>TEST 1</ion-title>
     <ion-button (click)="openModal()"color="success">Create</ion-button>  
+    <ion-button (click)="showCreateForm(test1)"color="success">Create</ion-button>    
   </ion-toolbar>
 </ion-header>
 <ion-content>  
@@ -65,5 +66,32 @@
         style="width: 400px"/>
     </div>
     <button [disabled]="updateForm.invalid" class="btn btn-primary" type="submit">Update</button>
+  </form>
+</div>
+
+<div *ngIf="isCreateActivated" style="margin-top: 50px; margin-left: 50px;">
+  <h4>Create Test1</h4>
+  <form (ngSubmit)="cretateTest1(updateForm)" #createForm="ngForm">
+    <div class="form-group">
+      <label for="name">Test1 Campo1</label>
+      <input
+        type="text"
+        id="campo1"
+        name="campo1"
+        class="form-control"
+        required
+        style="width: 400px"/>
+    </div>
+    <div class="form-group">
+      <label for="side">Campo 2</label>
+      <input
+        type="text"
+        id="campo2"
+        name="campo2"
+        class="form-control"
+        required
+        style="width: 400px"/>
+    </div>
+    <button [disabled]="createForm.invalid" class="btn btn-primary" type="submit">Create</button>
   </form>
 </div>
