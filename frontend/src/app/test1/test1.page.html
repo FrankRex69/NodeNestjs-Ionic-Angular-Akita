@@ -71,7 +71,7 @@
 
 <div *ngIf="isCreateActivated" style="margin-top: 50px; margin-left: 50px;">
   <h4>Create Test1</h4>
-  <form (ngSubmit)="cretateTest1(updateForm)" #createForm="ngForm">
+  <form (ngSubmit)="createTest1(createForm)" #createForm="ngForm">
     <div class="form-group">
       <label for="name">Test1 Campo1</label>
       <input
@@ -79,6 +79,7 @@
         id="campo1"
         name="campo1"
         class="form-control"
+        ngModel
         required
         style="width: 400px"/>
     </div>
@@ -89,6 +90,7 @@
         id="campo2"
         name="campo2"
         class="form-control"
+        ngModel
         required
         style="width: 400px"/>
     </div>

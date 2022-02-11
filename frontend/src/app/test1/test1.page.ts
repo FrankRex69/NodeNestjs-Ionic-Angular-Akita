@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { filter, switchMap } from 'rxjs/operators';
-import { IresponseTest1 } from '@commons/interfaces/test1.interface';
+import { IresponseTest1, IcreateFormDTO, IupdateFormDTO } from '@commons/interfaces/test1.interface';
 import { Test1Query } from './test1.query';
 import { Test1Service } from './test1.service';
 import { Test1State } from './test1.store';
@@ -18,13 +18,16 @@ import { Test1Modal } from './test1-modal/test1-modal.component';
 export class Test1Page implements OnInit {
 
   test1ToBeUpdated: IresponseTest1;
-
   isUpdateActivated = false;
+
+  test1ToBeCreated: IresponseTest1; 
   isCreateActivated: boolean;
 
   listTest1sSub: Subscription;
-  deleteTest1Sub: Subscription;
   updateTest1Sub: Subscription;
+  deleteTest1Sub: Subscription;
+  createTest1Sub: Subscription;
+
 
   cstate: Test1State;
 
@@ -84,11 +87,23 @@ export class Test1Page implements OnInit {
   }
 
   updateTest1(updateForm) {
+    console.log(updateForm.value);
+    console.log(updateForm.value.campo2);
     this.updateTest1Sub = this.test1Service.updateTest1(
       this.test1ToBeUpdated.id, updateForm.value).subscribe(result => console.log(result)
     );
     this.isUpdateActivated = false;
     this.test1ToBeUpdated = null;
+  }
+
+  createTest1(createForm) {
+    console.log(createForm.value.campo1);
+    console.log(createForm.value.campo2);
+    this.createTest1Sub = this.test1Service.createTest1(createForm).subscribe(result => {
+      console.log(result);
+    });
+    this.isCreateActivated = false;
+    this.test1ToBeCreated = null;
   }
 
   deleteTest1(test1Id: number) {

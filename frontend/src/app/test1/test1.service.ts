@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { map, tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { catchError, map, take, tap } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
 
 import { Test1Store } from './test1.store';
-import { IresponseTest1 } from '@commons/interfaces/test1.interface';
+import { IcreateFormDTO, IresponseTest1 } from '@commons/interfaces/test1.interface';
 import { environment } from '../../environments/environment';
 
 
@@ -33,6 +33,51 @@ export class Test1Service {
     return this.http.patch(`${environment.apiUrl}/Test1/${test1Id}`, test1).pipe(
       tap(result => {
         this.store.update(test1Id, test1);
+      })
+    );
+  }
+
+  // createTest1(test1: IresponseTest1): Observable<any> {
+  //   return this.http.post(`${environment.apiUrl}/Test1}`,test1).pipe(
+  //     tap(result => {
+  //       this.store.add(test1);
+  //     })
+  //   );
+  // }
+
+  // createTest1(test1): Observable<IcreateFormDTO> {
+  //   console.log('www---> ' + test1.value.campo1);
+  //   return this.http.post<IcreateFormDTO>(`${environment.apiUrl}/Test1`, test1.value).pipe(
+  //     take(1),
+  //     catchError((err: HttpErrorResponse) => {
+  //       console.log('🐱‍👤 : err', err);
+  //       return throwError(
+  //         () => new Error(`${err.error.error}: ${err.error.message[0]}`)
+  //       );
+  //     }),
+  //     tap((value: IresponseTest1) => {
+  //       console.log('🐱‍👤 : value', value);
+  //       this.store.add(value);
+  //       this.store.setLoading(false);
+  //     })
+  //   );
+  // }
+
+  createTest1(dto) {
+    console.log('wwwwwwwwwwww');
+    this.store.setLoading(true);
+    return this.http.post<IresponseTest1>(`${environment.apiUrl}/Test1/`, dto.value).pipe(
+      take(1),
+      catchError((err: HttpErrorResponse) => {
+        console.log('🐱‍👤 : err', err);
+        return throwError(
+          () => new Error(`${err.error.error}: ${err.error.message[0]}`)
+        );
+      }),
+      tap((value: IresponseTest1) => {
+        console.log('🐱‍👤 : value', value);
+        this.store.add(value);
+        this.store.setLoading(false);
       })
     );
   }
