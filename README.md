@@ -17,9 +17,10 @@ $ npm install
 ## Running the app
 ```bash
 # Docker (in root)
+$ docker network create proxy
 $ docker-compose up postgres_base
 
-# WATCH MODE 
+# WATCH MODE (in specific directory)
 # in "backend" directory
 $ npm run start:dev
 # in "frontend" directory
@@ -30,31 +31,17 @@ $ npm run start
 
 # production mode-backend
 $ npm run start:prod
+
+
+# WATCH MODE (in root directory)
+# developer - backend
+$ npm run dev:back
+
+# developer - frontend
+$ npm run dev:front
+
+
+# SWAGGER
+http://localhost:7000/api/swagger/
 ```
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).

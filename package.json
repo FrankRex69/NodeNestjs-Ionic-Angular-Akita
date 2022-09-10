@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:back": "cd backend && npm run start:dev",
-    "dev:front": "cd frontend && npm run build:watch"
+    "dev:front": "cd frontend && ionic serve",
+    "dev:front1": "cd frontend && npm run build:watch"
   },
   "author": "Francesco Re",
   "license": "ISC"
