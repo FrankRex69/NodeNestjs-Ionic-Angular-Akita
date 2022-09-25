@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IresponseTest1 } from '@commons/interfaces/test1.interface';
 import {
 ModalController,
 NavParams
 } from '@ionic/angular';
+import { Subscription } from 'rxjs';
+import { Test1Service } from '../test1.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -12,16 +16,23 @@ NavParams
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class Test1Modal implements OnInit {
+  @ViewChild
 
   modalTitle: string;
   modelId: number;
 
+  createTest1Sub: Subscription;
+  isCreateActivated: boolean;
+  test1ToBeCreated: IresponseTest1;
+
   constructor(
     private modalController: ModalController,
-    private navParams: NavParams
+    private navParams: NavParams,
+    private test1Service: Test1Service
   ) { }
 
   ngOnInit() {
+    console.log('fffff');
     console.table(this.navParams);
     this.modelId = this.navParams.data.paramID;
     this.modalTitle = this.navParams.data.paramTitle;
@@ -31,6 +42,16 @@ export class Test1Modal implements OnInit {
     // eslint-disable-next-line @typescript-eslint/no-inferrable-types
     const onClosedData: string = 'Wrapped Up!';
     await this.modalController.dismiss(onClosedData);
+  }
+
+  createTest1(createForm) {
+    console.log(createForm.value.campo1);
+    console.log(createForm.value.campo2);
+    this.createTest1Sub = this.test1Service.createTest1(createForm).subscribe(result => {
+      console.log(result);
+    });
+    this.isCreateActivated = false;
+    this.test1ToBeCreated = null;
   }
 
 }
