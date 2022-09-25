@@ -20,7 +20,7 @@ export class Test1Page implements OnInit {
   test1ToBeUpdated: IresponseTest1;
   isUpdateActivated = false;
 
-  test1ToBeCreated: IresponseTest1; 
+  test1ToBeCreated: IresponseTest1;
   isCreateActivated: boolean;
 
   listTest1sSub: Subscription;

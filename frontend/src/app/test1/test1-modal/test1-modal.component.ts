@@ -13,7 +13,6 @@ NavParams
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class Test1Modal implements OnInit {
 
-
   modalTitle: string;
   modelId: number;
 
