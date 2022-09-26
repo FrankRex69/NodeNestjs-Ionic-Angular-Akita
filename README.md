@@ -17,9 +17,14 @@ $ npm run setup
 
 ## Running the app
 ```bash
-# Docker (in root)
+## Docker (in root)
 $ docker network create proxy
 $ docker compose up
+
+# Docker stop e remove (in root)
+$ docker stop $(docker ps -a -q)
+$ docker rm $(docker ps -a -q)
+
 
 # WATCH MODE (in root directory)
 # developer - backend
@@ -28,8 +33,12 @@ $ npm run dev:back
 # developer - frontend
 $ npm run dev:front
 
-
 # SWAGGER
 http://localhost:7000/api/swagger/
+
+# PGADMIN
+http://localhost:5050/
+user: admin@admin.com
+pass: root
 ```
 
