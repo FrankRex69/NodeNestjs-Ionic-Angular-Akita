@@ -11,27 +11,15 @@
 ## Installation backend/frontend
 
 ```bash
-$ npm install
+# Install package's backend and frontend (in root directory)
+$ npm run setup
 ```
 
 ## Running the app
 ```bash
 # Docker (in root)
 $ docker network create proxy
-$ docker-compose up postgres_base
-
-# WATCH MODE (in specific directory)
-# in "backend" directory
-$ npm run start:dev
-# in "frontend" directory
-$ ionic serve
-
-# development-backend
-$ npm run start
-
-# production mode-backend
-$ npm run start:prod
-
+$ docker compose up
 
 # WATCH MODE (in root directory)
 # developer - backend
