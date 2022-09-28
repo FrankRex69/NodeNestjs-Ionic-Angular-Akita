@@ -28,8 +28,7 @@ export class Test1Modal implements OnInit {
   ngOnInit() {}
 
   async closeModal() {
-    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
-    const onClosedData: string = 'Wrapped Up!';
+    const onClosedData = 'Wrapped Up!';
     await this.modalController.dismiss(onClosedData);
   }
 
