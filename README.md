@@ -17,14 +17,13 @@ $ npm run setup
 
 ## Running the app
 ```bash
-## Docker (in root)
-$ docker network create proxy
-$ docker compose up
-
 # Docker stop e remove (in root)
 $ docker stop $(docker ps -a -q)
 $ docker rm $(docker ps -a -q)
 
+# Docker (in root)
+$ docker network create proxy
+$ docker compose up
 
 # WATCH MODE (in root directory)
 # developer - backend
