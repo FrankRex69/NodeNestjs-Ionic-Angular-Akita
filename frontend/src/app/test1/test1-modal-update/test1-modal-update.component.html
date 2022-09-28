@@ -11,11 +11,18 @@
 
 <ion-content class="ion-padding">
   <form (ngSubmit)="updateTest1Modal(updateForm)" #updateForm="ngForm">
-  <!-- <form (ngSubmit)="createTest1(createForm)" #createForm="ngForm"> -->
   <ion-grid> 
     <ion-row>
       <ion-col text-center>
-        ID : {{id}}
+        <input
+          type="hidden"
+          id="id"
+          name="id"
+          class="form-control"
+          required
+          [(ngModel)]="id"
+          style="width: 400px"/>
+          ID : {{id}}
       </ion-col>
     </ion-row>
     <ion-row>
@@ -25,9 +32,9 @@
           type="text"
           id="campo1"
           name="campo1"
-          class="form-control"
+          class="form-control"          
           required
-          value={{campo1}}
+          [(ngModel)]="campo1"
           style="width: 400px"/>
       </ion-col>
     </ion-row>
@@ -40,7 +47,7 @@
           name="campo2"
           class="form-control"
           required
-          value={{campo2}}
+          [(ngModel)]="campo2"
           style="width: 400px"/>
       </ion-col>
     </ion-row>

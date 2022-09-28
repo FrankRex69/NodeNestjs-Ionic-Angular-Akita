@@ -2,11 +2,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { filter, switchMap } from 'rxjs/operators';
+import { ModalController } from '@ionic/angular';
+
 import { IresponseTest1, IcreateFormDTO, IupdateFormDTO } from '@commons/interfaces/test1.interface';
 import { Test1Query } from './test1.query';
 import { Test1Service } from './test1.service';
 import { Test1State } from './test1.store';
-import { ModalController } from '@ionic/angular';
+
 import { Test1Modal } from './test1-modal/test1-modal.component';
 import { Test1ModalUpdateComponent } from './test1-modal-update/test1-modal-update.component';
 
@@ -75,34 +77,34 @@ export class Test1Page implements OnInit {
     ).subscribe(result => {});
   }
 
-  showCreateForm() {
-    this.isCreateActivated = true;
-  }
+  // showCreateForm() {
+  //   this.isCreateActivated = true;
+  // }
 
-  showUpdateForm(test1: IresponseTest1) {
-    this.test1ToBeUpdated = {...test1};
-    this.isUpdateActivated = true;
-  }
+  // showUpdateForm(test1: IresponseTest1) {
+  //   this.test1ToBeUpdated = {...test1};
+  //   this.isUpdateActivated = true;
+  // }
 
-  updateTest1(updateForm) {
-    console.log('dddd' +updateForm.value);
-    console.log('fff' + updateForm.value.campo2);
-    this.updateTest1Sub = this.test1Service.updateTest1(
-      this.test1ToBeUpdated.id, updateForm.value).subscribe(result => console.log(result)
-    );
-    this.isUpdateActivated = false;
-    this.test1ToBeUpdated = null;
-  }
+  // updateTest1(updateForm) {
+  //   console.log('dddd' +updateForm.value);
+  //   console.log('fff' + updateForm.value.campo2);
+  //   this.updateTest1Sub = this.test1Service.updateTest1(
+  //     this.test1ToBeUpdated.id, updateForm.value).subscribe(result => console.log(result)
+  //   );
+  //   this.isUpdateActivated = false;
+  //   this.test1ToBeUpdated = null;
+  // }
 
-  createTest1(createForm) {
-    console.log(createForm.value.campo1);
-    console.log(createForm.value.campo2);
-    this.createTest1Sub = this.test1Service.createTest1(createForm).subscribe(result => {
-      console.log(result);
-    });
-    this.isCreateActivated = false;
-    this.test1ToBeCreated = null;
-  }
+  // createTest1(createForm) {
+  //   console.log(createForm.value.campo1);
+  //   console.log(createForm.value.campo2);
+  //   this.createTest1Sub = this.test1Service.createTest1(createForm).subscribe(result => {
+  //     console.log(result);
+  //   });
+  //   this.isCreateActivated = false;
+  //   this.test1ToBeCreated = null;
+  // }
 
   deleteTest1(test1Id: number) {
     this.deleteTest1Sub = this.test1Service.deleteTest1(test1Id).subscribe(result => {

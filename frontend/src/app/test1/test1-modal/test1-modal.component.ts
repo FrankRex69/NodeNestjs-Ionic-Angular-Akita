@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IresponseTest1 } from '@commons/interfaces/test1.interface';
-import { ModalController, NavParams } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { Test1Service } from '../test1.service';
 
@@ -22,14 +22,10 @@ export class Test1Modal implements OnInit {
 
   constructor(
     private modalController: ModalController,
-    private navParams: NavParams,
     private test1Service: Test1Service
   ) { }
 
-  ngOnInit() {
-    this.modelId = this.navParams.data.paramID;
-    this.modalTitle = this.navParams.data.paramTitle;
-  }
+  ngOnInit() {}
 
   async closeModal() {
     // eslint-disable-next-line @typescript-eslint/no-inferrable-types
