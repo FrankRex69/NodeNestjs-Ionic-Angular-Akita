@@ -8,6 +8,7 @@ import { Test1Service } from './test1.service';
 import { Test1State } from './test1.store';
 import { ModalController } from '@ionic/angular';
 import { Test1Modal } from './test1-modal/test1-modal.component';
+import { Test1ModalUpdateComponent } from './test1-modal-update/test1-modal-update.component';
 
 
 @Component({
@@ -28,7 +29,6 @@ export class Test1Page implements OnInit {
   deleteTest1Sub: Subscription;
   createTest1Sub: Subscription;
 
-
   cstate: Test1State;
 
   test1s$: Observable<IresponseTest1[]> = this.test1Query.selectAll();
@@ -45,22 +45,20 @@ export class Test1Page implements OnInit {
  // -- Modal
   async openModal() {
     const modal = await this.modalController.create({
-      component: Test1Modal,
-      // componentProps: {
-      //   // eslint-disable-next-line quote-props
-      //   'paramID': 123,
-      //   // eslint-disable-next-line quote-props
-      //   'paramTitle': 'Test Title'
-      // }
+      component: Test1Modal
     });
+    return await modal.present();
+  }
 
-    // modal.onDidDismiss().then((dataReturned) => {
-    //   if (dataReturned !== null) {
-    //     this.dataReturned = dataReturned.data;
-    //     //alert('Modal Sent Data :'+ dataReturned);
-    //   }
-    // });
-
+  async openModalUpdate(test1: IresponseTest1) {
+    const modal = await this.modalController.create({
+      component: Test1ModalUpdateComponent,
+      componentProps: {
+        id: test1.id,
+        campo1: test1.campo1,
+        campo2: test1.campo2
+      }
+    });
     return await modal.present();
   }
 
@@ -87,8 +85,8 @@ export class Test1Page implements OnInit {
   }
 
   updateTest1(updateForm) {
-    console.log(updateForm.value);
-    console.log(updateForm.value.campo2);
+    console.log('dddd' +updateForm.value);
+    console.log('fff' + updateForm.value.campo2);
     this.updateTest1Sub = this.test1Service.updateTest1(
       this.test1ToBeUpdated.id, updateForm.value).subscribe(result => console.log(result)
     );

@@ -2,7 +2,6 @@
   <ion-toolbar>
     <ion-title>TEST 1</ion-title>
     <ion-button (click)="openModal()"color="success">Create</ion-button>  
-    <!-- <ion-button (click)="showCreateForm(test1)"color="success">Create</ion-button>     -->
   </ion-toolbar>
 </ion-header>
 <ion-content>  
@@ -32,7 +31,8 @@
       <div>{{ test1.campo2 }}</div>
     </ion-col>
     <ion-col size="2"> 
-      <ion-button (click)="showUpdateForm(test1)"color="success">Update</ion-button>             
+      <!-- <ion-button (click)="showUpdateForm(test1)"color="success">Update</ion-button> -->
+      <ion-button (click)="openModalUpdate(test1)"color="success">Update</ion-button>      
     </ion-col>
     <ion-col size="2"> 
       <ion-button (click)="deleteTest1(test1.id)"color="danger">Delete</ion-button>  

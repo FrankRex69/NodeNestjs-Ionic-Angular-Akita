@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Update</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="updateTest1Modal(updateForm)" #updateForm="ngForm">
+  <!-- <form (ngSubmit)="createTest1(createForm)" #createForm="ngForm"> -->
+  <ion-grid> 
+    <ion-row>
+      <ion-col text-center>
+        ID : {{id}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <label for="side">Campo 1</label>
+      <ion-col text-center>
+        <input
+          type="text"
+          id="campo1"
+          name="campo1"
+          class="form-control"
+          required
+          value={{campo1}}
+          style="width: 400px"/>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <label for="side">Campo 2</label>
+      <ion-col text-center>
+        <input
+          type="text"
+          id="campo2"
+          name="campo2"
+          class="form-control"
+          required
+          value={{campo2}}
+          style="width: 400px"/>
+      </ion-col>
+    </ion-row>
+    <!-- <ion-button [disabled]="updateTest1Modal.invalid" class="btn btn-success" type="submit">Update</ion-button> -->
+    <ion-button class="btn btn-success" type="submit">Update</ion-button>
+  </ion-grid>
+  </form>
+</ion-content>
