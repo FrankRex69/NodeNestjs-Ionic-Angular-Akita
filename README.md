@@ -1,5 +1,5 @@
 <p align="center">
-  Basci project with: 
+  Basic project with: 
   - Backend with Nodejs and Nestjs framework;
   - Frontend with Angular and Akita framework.
 </p>
@@ -23,7 +23,7 @@ $ docker rm $(docker ps -a -q)
 
 # Docker (in root)
 $ docker network create proxy
-$ docker compose up
+$ docker-compose --env-file ./backend/.env up
 
 # WATCH MODE (in root directory)
 # developer - backend

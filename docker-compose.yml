@@ -30,13 +30,17 @@ services:
     networks:
       - proxy
     environment:
-      - POSTGRES_PASSWORD=passBASE
+      - POSTGRES_HOST=${PG_HOST}
+      - POSTGRES_DB=${PG_DB}
+      - POSTGRES_USER=${PG_USER}
+      - POSTGRES_PASSWORD=${PG_PASSWORD}
       - TZ=Europe/Rome
       - PGTZ=Europe/Rome
     ports:
       - 5437:5432
     volumes:
       - ./docker_volumes/postgresql_data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   pgadmin4_base:
     container_name: pgadmin4_base_container
