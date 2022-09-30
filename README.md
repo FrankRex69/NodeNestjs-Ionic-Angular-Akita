@@ -1,5 +1,5 @@
 <p align="center">
-  Basci project with: 
+  Basic project with: 
   - Backend with Nodejs and Nestjs framework;
   - Frontend with Angular and Akita framework.
 </p>
