@@ -23,7 +23,7 @@ $ docker rm $(docker ps -a -q)
 
 # Docker (in root)
 $ docker network create proxy
-$ docker compose up
+$ docker-compose --env-file ./backend/.env up
 
 # WATCH MODE (in root directory)
 # developer - backend
