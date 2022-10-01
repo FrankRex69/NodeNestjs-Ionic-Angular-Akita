@@ -1,28 +1,6 @@
 version: "3.7"
 
 services:
-  # prog-base1:
-  #   image: ep/prog_base1:latest
-  #   build: .
-  #   container_name: prog_base1_container
-  #   restart: unless-stopped
-  #   networks:
-  #     - proxy
-  #   ports:
-  #     - 7000:7000
-  #   env_file:
-  #     - ./backend/.env.docker
-  #   depends_on:
-  #    - postgres_base
-  #   #environment:
-  #   #  - PG_HOST=chop-postgres
-  #   #  - PG_PORT=5432
-  #   #  - PG_DB=postgres
-  #   #  - PG_USER=postgres
-  #   #  - PG_PASSWORD=developmentChatOperativa
-  #   #  - PG_SCHEMA=chop
-  #   #volumes:
-
   postgres_base:
     image: postgis/postgis:13-3.1-alpine
     container_name: postgres_base_container
@@ -37,10 +15,10 @@ services:
       - TZ=Europe/Rome
       - PGTZ=Europe/Rome
     ports:
-      - 5437:5432
+      - ${PG_PORT}:5432
     volumes:
       - ./docker_volumes/postgresql_data:/var/lib/postgresql/data
-      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./init_docker/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   pgadmin4_base:
     container_name: pgadmin4_base_container
