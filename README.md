@@ -1,7 +1,7 @@
 <p align="center">
   Basic project with: 
   - Backend with Nodejs and Nestjs framework;
-  - Frontend with Angular and Akita framework
+  - Frontend with Angular and Akita framework.
 </p>
 
 ## Description
