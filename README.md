@@ -15,7 +15,7 @@
 $ npm run setup
 ```
 
-## Running the app
+## Docker section
 ```bash
 # Docker stop e remove (in root)
 $ docker stop $(docker ps -a -q)
@@ -24,14 +24,17 @@ $ docker rm $(docker ps -a -q)
 # Docker (in root)
 $ docker network create proxy
 $ docker-compose --env-file ./backend/.env up (before you rename file backend/.env.example like backend/.env)
-
+```
+## Running the app
+```bash
 # WATCH MODE (in root directory)
 # developer - backend
 $ npm run dev:back
 
 # developer - frontend
 $ npm run dev:front
-
+```
+```bash
 # url for use App
 http://localhost:8100/test1
 
@@ -42,5 +45,11 @@ http://localhost:7000/api/swagger/
 http://localhost:5050/
 user: admin@admin.com
 pass: root
+for connection in pgadmin
+- create a new server
+- "hostname": "postgres_base"
+- "port": 5432
+- "Maintenance": "postgres"
+- "username": "postgres"
+- "Password": "developmentChatOperativa"
 ```
-
