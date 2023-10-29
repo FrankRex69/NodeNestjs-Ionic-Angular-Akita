@@ -23,7 +23,8 @@ export class ProvaGeneraleController {
 
   @Get()
   findAll() {
-    return this.provaGeneraleService.findAll();
+    return "ciao"
+    //return this.provaGeneraleService.findAll();
   }
 
   @Get(':id')

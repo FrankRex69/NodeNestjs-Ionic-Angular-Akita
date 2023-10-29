@@ -6,34 +6,72 @@
 
 <ion-content>   
 
-  <ion-grid>
-    <ion-row>
-      <ion-col size="5"></ion-col>  
-      <ion-col>
-        <ion-item>
-          <ion-label position="floating">LOGIN</ion-label>
-          <ion-input label="insert login" placeholder="Login"></ion-input>
-        </ion-item>
-      </ion-col>  
-      <ion-col size="4"></ion-col> 
-    </ion-row>
-    <ion-row>
-      <ion-col size="5"></ion-col>  
-      <ion-col>
-        <ion-item>
-          <ion-label position="floating">PASSWORD</ion-label>
-          <ion-input label="Input password" placeholder="Password"></ion-input>
-        </ion-item>
-      </ion-col>  
-      <ion-col size="4"></ion-col> 
-    </ion-row>
-    <ion-row>
-      <ion-col size="5"></ion-col>
-      <ion-col>
-        <ion-button (click)="checkLogin(test1)" color="success">Login</ion-button>
-      </ion-col>  
-      <ion-col size="4"></ion-col> 
-    </ion-row>
-  </ion-grid>
+  <form (ngSubmit)="checkLogin(loginForm)" #loginForm="ngForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="5"></ion-col>  
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">LOGIN</ion-label>
+            <ion-input
+              type="text"
+              id="userLogin"
+              name="userLogin"
+              class="form-control"
+              ngModel
+              required
+              label="insert login" 
+              placeholder="Login">
+            </ion-input>
+            <!-- <input
+              type="text"
+              id="userlogin"
+              name="userlogin"
+              class="form-control"
+              required
+              ngModel
+              style="width: 400px"/> -->
+          </ion-item>
+        </ion-col>  
+        <ion-col size="4"></ion-col> 
+      </ion-row>
+      <ion-row>
+        <ion-col size="5"></ion-col>  
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">PASSWORD</ion-label>
+            <ion-input
+              type="text"
+              id="passLogin"
+              name="passLogin"
+              class="form-control"
+              ngModel
+              required
+              label="Input password" 
+              placeholder="Password">
+            </ion-input>
+            <!-- <input
+              type="text"
+              id="passlogin"
+              name="passlogin"
+              class="form-control"
+              required
+              ngModel
+              style="width: 400px"/> -->
+            
+          </ion-item>
+        </ion-col>  
+        <ion-col size="4"></ion-col> 
+      </ion-row>
+      <ion-row>
+        <ion-col size="5"></ion-col>
+        <ion-col>
+          <!-- <ion-button (click)="checkLogin()" color="success">Login</ion-button> -->
+          <ion-button type="submit" color="success">Login</ion-button>    
+        </ion-col>  
+        <ion-col size="4"></ion-col> 
+      </ion-row>
+    </ion-grid>
+  </form>
 
 </ion-content>

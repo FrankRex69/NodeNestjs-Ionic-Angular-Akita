@@ -64,7 +64,6 @@ export class Test1Service {
   // }
 
   createTest1(dto) {
-    console.log('wwwwwwwwwwww');
     this.store.setLoading(true);
     return this.http.post<IresponseTest1>(`${environment.apiUrl}/Test1/`, dto.value).pipe(
       take(1),
