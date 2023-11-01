@@ -5,6 +5,7 @@ import { ModuModule } from './modu/modu.module';
 import * as dotenv from 'dotenv';
 import { User } from './modu/entities/user/user.entity';
 import { ProvaGenerale } from './modu/entities/prova-generale/entities/prova-generale.entity';
+import { AuthModule } from './modu/entities/auth/auth.module';
 
 dotenv.config();
 
@@ -36,6 +37,7 @@ console.log('DB_HOST: ' + _.DB_HOST);
       autoLoadEntities: true,
       logging: true,
     }),
+    AuthModule,
     // TypeOrmModule.forRoot({
     //   type: 'mysql',
     //   host: 'localhost',
