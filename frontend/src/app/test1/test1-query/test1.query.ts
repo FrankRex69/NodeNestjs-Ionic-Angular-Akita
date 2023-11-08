@@ -2,7 +2,7 @@
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable arrow-body-style */
 import { Injectable } from '@angular/core';
-import { Test1State, Test1Store } from './test1.store';
+import { Test1State, Test1Store } from '../test1-store/test1.store';
 import { QueryEntity } from '@datorama/akita';
 
 @Injectable({

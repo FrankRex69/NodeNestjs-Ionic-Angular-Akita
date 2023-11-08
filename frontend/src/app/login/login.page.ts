@@ -1,37 +1,29 @@
 import { Component, OnInit } from '@angular/core';
+
 import { IresponseLogin } from '@commons/interfaces/login.interface';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  templateUrl: './login-template-html/login.page.html',
+  styleUrls: ['./login-template-html/login.page.scss'],
 })
 export class LoginPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private loginService: LoginService,
+  ) {}
 
   ngOnInit() {
   }
 
-
   async checkLogin(loginForm: { value: IresponseLogin }){
-    console.log(loginForm.value.userLogin);
-    console.log(loginForm.value.passLogin);
+    const credentialLogin = {
+      userLogin: loginForm.value.userLogin,
+      passLogin: loginForm.value.passLogin
+    };
+    console.log(await this.loginService.checkLoginService(credentialLogin));
   }
 
-
-
-
-  // async openModalUpdate(test1: IresponseTest1) {
-  //   const modal = await this.modalController.create({
-  //     component: Test1ModalUpdateComponent,
-  //     componentProps: {
-  //       id: test1.id,
-  //       campo1: test1.campo1,
-  //       campo2: test1.campo2
-  //     }
-  //   });
-  //   return await modal.present();
-  // }
 
 }
