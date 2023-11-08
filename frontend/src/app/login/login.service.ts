@@ -36,10 +36,6 @@ export class LoginService {
     );
   }
 
-
-
-
-
   async checkLoginService(credentialLogin) {
     this.http.post<any[]>(`${environment.apiUrl}/auth/checkLoginPost`, credentialLogin, {withCredentials: true})
       //.subscribe(data => this.router.navigate(['/test1']),

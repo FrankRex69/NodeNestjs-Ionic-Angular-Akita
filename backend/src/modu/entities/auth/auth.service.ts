@@ -12,6 +12,17 @@ export class AuthService {
     private jwtService: JwtService
   ) {}
 
+  async signInLogin(): Promise<GetAuthTokenDto> {
+    try {
+      const payload = { username: '' };
+      return {
+        login_token: await this.jwtService.signAsync(payload),
+      };
+    } catch (error) {
+      return error.response;
+    }
+  }
+
   async signIn(signInDto: ReadAuthDto): Promise<ReadAuthTokenDto> {
     try {
       const username = await this.usersService.findOne(signInDto.userLogin);
@@ -27,15 +38,6 @@ export class AuthService {
     }
   }
 
-  async signInLogin(): Promise<GetAuthTokenDto> {
-    try {
-      const payload = { username: '' };
-      return {
-        login_token: await this.jwtService.signAsync(payload),
-      };
-    } catch (error) {
-      return error.response;
-    }
-  }
+  
   
 }

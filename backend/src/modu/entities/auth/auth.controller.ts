@@ -77,10 +77,9 @@ import { GetAuthTokenDto, ReadAuthTokenDto } from './dto/read-auth-token.dto';
     // }
 
     @Public()
-    @Get('checkLoginGet')
-    findOne(): string {
-      console.log("params.id");
-      return `This action returns a cat`;
+    @Get('getLoginToken')
+    getLoginToken(): Promise<GetAuthTokenDto> {
+      return this.service.signInLogin();
     }
     
     @Public()
@@ -107,11 +106,7 @@ import { GetAuthTokenDto, ReadAuthTokenDto } from './dto/read-auth-token.dto';
     //   return this.service.signInLogin(dataBody);
     // }
 
-    @Public()
-    @Get('getLoginToken')
-    getLoginToken(): Promise<GetAuthTokenDto> {
-      return this.service.signInLogin();
-    }
+    
 
     
     
