@@ -15,7 +15,9 @@ export class LoginPage implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.loginService.getLoginToken();
   }
+
 
   async checkLogin(loginForm: { value: IresponseLogin }){
     const credentialLogin = {

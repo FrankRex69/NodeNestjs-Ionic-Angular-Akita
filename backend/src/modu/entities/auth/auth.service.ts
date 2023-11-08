@@ -3,7 +3,7 @@ import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { ReadAuthDto } from './dto/read-auth.dto';
 import { Auth } from './entity-file/auth.entity';
-import { ReadAuthTokenDto } from './dto/read-auth-token.dto';
+import { GetAuthTokenDto, ReadAuthTokenDto } from './dto/read-auth-token.dto';
 
 @Injectable()
 export class AuthService {
@@ -13,7 +13,7 @@ export class AuthService {
   ) {}
 
   async signIn(signInDto: ReadAuthDto): Promise<ReadAuthTokenDto> {
-    try {      
+    try {
       const username = await this.usersService.findOne(signInDto.userLogin);
       if (username?.password !== signInDto.passLogin) {
         throw new UnauthorizedException();
@@ -26,4 +26,16 @@ export class AuthService {
       return error.response;
     }
   }
+
+  async signInLogin(): Promise<GetAuthTokenDto> {
+    try {
+      const payload = { username: '' };
+      return {
+        login_token: await this.jwtService.signAsync(payload),
+      };
+    } catch (error) {
+      return error.response;
+    }
+  }
+  
 }

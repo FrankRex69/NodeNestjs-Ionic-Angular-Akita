@@ -18,7 +18,7 @@ import {
   import { Public } from './decorators/public.decorator';
 
   import { AuthService } from './auth.service';
-import { ReadAuthTokenDto } from './dto/read-auth-token.dto';
+import { GetAuthTokenDto, ReadAuthTokenDto } from './dto/read-auth-token.dto';
   
   
   @Controller('auth')
@@ -86,9 +86,32 @@ import { ReadAuthTokenDto } from './dto/read-auth-token.dto';
     @Public()
     @Post('checkLoginPost')
     readAuth(@Body() dataBody: ReadAuthDto): Promise<ReadAuthTokenDto> {           
-      return this.service.signIn(dataBody);      
+      return this.service.signIn(dataBody);
     }
 
+    // @Public()
+    // @Post('getLoginToken')
+    // getLoginToken(): Promise<ReadAuthTokenDto> {
+    //   const data = {
+    //     userLogin: '',
+    //     passLogin: ''
+    //   }
+    //   return this.service.signIn(data);
+    // }
+
+    
+
+    // @Public()
+    // @Post('getLoginToken')
+    // getLoginToken(@Body() dataBody: ReadAuthDto): Promise<GetAuthTokenDto> {           
+    //   return this.service.signInLogin(dataBody);
+    // }
+
+    @Public()
+    @Get('getLoginToken')
+    getLoginToken(): Promise<GetAuthTokenDto> {
+      return this.service.signInLogin();
+    }
 
     
     

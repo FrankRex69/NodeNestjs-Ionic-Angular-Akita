@@ -6,3 +6,9 @@ export class ReadAuthTokenDto {
   @IsString()
   access_token: string; 
 }
+
+export class GetAuthTokenDto {
+  @ApiProperty()
+  @IsString()
+  login_token: string; 
+}

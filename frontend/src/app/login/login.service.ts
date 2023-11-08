@@ -21,25 +21,30 @@ export class LoginService {
     this.http = http;
   }
 
-//----------- methods
+  //----------- methods
+  // public getLoginToken(data) {
+  //   this.http.post<any[]>(`${environment.apiUrl}/auth/getLoginToken`)
+  //     .subscribe((data: any) => localStorage.setItem('login_Token', data.access_token),
+  //     error => { console.log('Error get login token:' + error.message); }
+  //   );
+  // }
 
-// async checkLoginService(credentialLogin) {
-//   this.http.post<any[]>(`${environment.apiUrl}/auth/checkLoginPost`, credentialLogin)
-//     .subscribe(data => console.log('Response', data)
-//       // {
-//       //   this.data = data;
-//       //   return this.data;
-//       // }
-//       ,
-//     error => { console.log('qq' + error.message); }
-//   );
-// }
+  getLoginToken() {
+    this.http.get<any[]>(`${environment.apiUrl}/auth/getLoginToken`)
+      .subscribe((data: any) => localStorage.setItem('login_token', data.login_token),
+      error => { console.log('Error get login token' + error.message); }
+    );
+  }
+
+
+
+
 
   async checkLoginService(credentialLogin) {
     this.http.post<any[]>(`${environment.apiUrl}/auth/checkLoginPost`, credentialLogin, {withCredentials: true})
       //.subscribe(data => this.router.navigate(['/test1']),
       .subscribe((data: any) => localStorage.setItem('Token', data.access_token),
-      error => { console.log('qq' + error.message); }
+      error => { console.log('Error check login token' + error.message); }
     );
   }
 
