@@ -22,25 +22,18 @@ export class LoginService {
   }
 
   //----------- methods
-  // public getLoginToken(data) {
-  //   this.http.post<any[]>(`${environment.apiUrl}/auth/getLoginToken`)
-  //     .subscribe((data: any) => localStorage.setItem('login_Token', data.access_token),
-  //     error => { console.log('Error get login token:' + error.message); }
-  //   );
-  // }
-
   getLoginToken() {
     this.http.get<any[]>(`${environment.apiUrl}/auth/getLoginToken`)
       .subscribe((data: any) => localStorage.setItem('login_token', data.login_token),
-      error => { console.log('Error get login token' + error.message); }
+      error => { console.log('Error get login_token: ' + error.message); }
     );
   }
 
   async checkLoginService(credentialLogin) {
-    this.http.post<any[]>(`${environment.apiUrl}/auth/checkLoginPost`, credentialLogin, {withCredentials: true})
+    this.http.post<any[]>(`${environment.apiUrl}/auth/checkLogin`, credentialLogin, {withCredentials: true})
       //.subscribe(data => this.router.navigate(['/test1']),
-      .subscribe((data: any) => localStorage.setItem('Token', data.access_token),
-      error => { console.log('Error check login token' + error.message); }
+      .subscribe((data: any) => localStorage.setItem('access_token', data.access_token),
+      error => { console.log('Error check login: ' + error.message); }
     );
   }
 
