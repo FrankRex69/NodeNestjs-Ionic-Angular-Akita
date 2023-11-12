@@ -34,18 +34,21 @@ import {
       return this.service.signInLogin();
     }
     
-    @Public()
+    @UseGuards(AuthGuard)
     @HttpCode(HttpStatus.OK)
-    @Post('checkLogin')
-    getAccessToken(@Body() dataBody: ReadAuthDto): Promise<ReadAuthTokenDto> {          
-      return this.service.signIn(dataBody);
+    @Post('checkLoginToken')
+    async getAccessToken(@Body() dataBody: ReadAuthDto): Promise<ReadAuthTokenDto | String> {
+      try {
+        return await this.service.signIn(dataBody);
+      } catch (error) {
+        console.log("error");
+      }
     }
 
     @UseGuards(AuthGuard)
-    @Get('profile')
+    @Get('testProfile')
     getProfile(@Request() req) {
       return req.user;
     }
-
     
   }

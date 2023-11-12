@@ -23,21 +23,20 @@ export class AuthService {
     }
   }
 
-  async signIn(signInDto: ReadAuthDto): Promise<ReadAuthTokenDto> {
+  async signIn(signInDto: ReadAuthDto): Promise<ReadAuthTokenDto | String> {
     try {
       const username = await this.usersService.findOne(signInDto.userLogin);
-      if (username?.password !== signInDto.passLogin) {
-        throw new UnauthorizedException();
+      if (username?.password !== signInDto.passLogin) {              
+        throw new UnauthorizedException();      
       }
-      const payload = { username: signInDto.userLogin };
-      return {
+      const payload = { username: signInDto.userLogin };      
+      return {        
         access_token: await this.jwtService.signAsync(payload),
       };
     } catch (error) {
-      return error.response;
+      console.log(error);
+      
     }
-  }
-
-  
+  }  
   
 }

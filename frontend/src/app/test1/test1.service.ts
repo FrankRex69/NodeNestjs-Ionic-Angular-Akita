@@ -20,6 +20,21 @@ export class Test1Service {
     this.store = store;
   }
 
+
+  // getAllTest1s(): Observable<IresponseTest1[]> {
+  //   const accessToken = localStorage.getItem('access_token');
+  //   // eslint-disable-next-line @typescript-eslint/naming-convention
+  //   const headers = { Authorization: accessToken};
+  //   console.log('headers: ' , headers);
+
+  //   return this.http.get<IresponseTest1[]>(`${environment.apiUrl}/Test1/`, { headers }).pipe(
+  //   //return this.http.get<IresponseTest1[]>(`${environment.apiUrl}/Test1/`).pipe(
+  //     tap(test1 => {
+  //       this.store.loadTest1s(test1, true);
+  //     })
+  //   );
+  // }
+
   getAllTest1s(): Observable<IresponseTest1[]> {
     return this.http.get<IresponseTest1[]>(`${environment.apiUrl}/Test1/`).pipe(
       tap(test1 => {
