@@ -96,6 +96,10 @@ export class Test1Page implements OnInit {
     }
   }
 
+  logOut() {
+    this.test1Service.logOut();
+  }
+
 
 
 }

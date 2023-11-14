@@ -23,13 +23,14 @@ export class AuthService {
     }
   }
 
-  async signIn(signInDto: ReadAuthDto): Promise<ReadAuthTokenDto | String> {
+  async signIn(signInData: ReadAuthDto): Promise<ReadAuthTokenDto | String> {
     try {
-      const username = await this.usersService.findOne(signInDto.userLogin);
-      if (username?.password !== signInDto.passLogin) {              
+      const username = await this.usersService.findOne(signInData.userLogin);      
+      
+      if (username?.password !== signInData.passLogin) {              
         throw new UnauthorizedException();      
       }
-      const payload = { username: signInDto.userLogin };      
+      const payload = { username: signInData.userLogin, password: signInData.passLogin, role: username.role };      
       return {        
         access_token: await this.jwtService.signAsync(payload),
       };

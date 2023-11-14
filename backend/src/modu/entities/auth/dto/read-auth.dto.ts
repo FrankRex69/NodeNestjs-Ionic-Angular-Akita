@@ -9,4 +9,8 @@ export class ReadAuthDto {
   @ApiProperty()
   @IsString()
   passLogin: string;
+
+  @ApiProperty()
+  @IsString()
+  role: string;
 }

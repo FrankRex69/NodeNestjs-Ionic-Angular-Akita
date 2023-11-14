@@ -25,13 +25,6 @@ export class LoginService {
   //----------- methods
 
   // --- GET
-  // getLoginToken() {
-  //   this.http.get<any[]>(`${environment.apiUrl}/auth/getLoginToken`)
-  //     .subscribe((data: any) => localStorage.setItem('login_token', data.login_token),
-  //     error => { console.log('Error get login_token: ' + error.message); }
-  //   );
-  // }
-
   getLoginToken() {
     axios.get(`${environment.apiUrl}/auth/getLoginToken`)
       .then(response => {
@@ -51,10 +44,6 @@ export class LoginService {
       }})
       .then(response => {
         localStorage.setItem('access_token', response.data.access_token);
-        // axios.post(`${environment.apiUrl}/test1`, credentialLogin, { headers: {
-        //   // eslint-disable-next-line @typescript-eslint/naming-convention
-        //   Authorization: `Bearer ${response.data.access_token}`
-        // }});
         this.router.navigate(['/test1']);
       })
       .catch(error => {

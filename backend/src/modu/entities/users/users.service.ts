@@ -9,10 +9,12 @@ export class UsersService {
     {
       username: 'fra',
       password: 'rex',
+      role: 'admin'
     },
     {
       username: 'maria',
       password: 'guess',
+      role: 'customer'
     },
   ];
 

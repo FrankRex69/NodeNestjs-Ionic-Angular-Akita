@@ -12,44 +12,49 @@ import { IresponseTest1 } from '../../../commons/interfaces/test1.interface';
 import { Test1Service } from './test1.service';
 import { Public } from '../auth/decorators/public.decorator';
 import { AuthGuard } from '../auth/auth.guard';
+import { RoleGuard } from '../auth/roles.guard';
+import { Roles } from '../auth/decorators/roles.decorator';
+import { Role } from '@commons/interfaces/login.interface';
+
+console.log('sssss' , Role.Admin);
 
 
 @ApiTags('Test1')
 @Controller('test1')
-export class Test1Controller {
-
-  @Inject(Test1Service) public readonly service: Test1Service;
+export class Test1Controller {  
   
-  // @UseGuards(AuthGuard)
-  @Public()
-  @HttpCode(HttpStatus.OK)
+  @Inject(Test1Service) public readonly service: Test1Service;  
+
+  
+  @Roles(Role.Customer)
+  @UseGuards(RoleGuard)
   @Get()
   public async findAll(): Promise<IresponseTest1[]> {
     const prg = await this.service.findAll();
     return prg;
   }
-  @Public()
-  @HttpCode(HttpStatus.OK)
+
   @Get(':id')
   findOne(@Param('id', ParseIntPipe) id: number): Promise<IresponseTest1> {
     return this.service.findOne(id);
-  }
+  }  
   
+  @Roles(Role.Admin)
+  @UseGuards(RoleGuard)
   @Post()
   create(@Body() dto: CreateTest1Dto): Promise<CreateTest1Dto> {
     return this.service.create(dto);
   }
-  
+
+  @Roles(Role.Customer)
+  @UseGuards(RoleGuard)
   @Patch(':id')  
   update(@Param('id', ParseIntPipe) id: number,@Body() dto: UpdateTest1Dto): Promise<UpdateTest1Dto> {
     return this.service.update(id, dto);
   } 
-  
-  @Delete(':id')
-  //@Roles(UserRole.Admin)
-  remove(@Param('id', ParseIntPipe) id: number): Promise<IresponseTest1> {
-    console.log('iddddd delete: ' + id);
-    
+
+  @Delete(':id')  
+  remove(@Param('id', ParseIntPipe) id: number): Promise<IresponseTest1> {   
     return this.service.remove(id);
   }
 
