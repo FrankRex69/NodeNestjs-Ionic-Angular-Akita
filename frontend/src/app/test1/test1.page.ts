@@ -5,18 +5,17 @@ import { filter, switchMap } from 'rxjs/operators';
 import { ModalController } from '@ionic/angular';
 
 import { IresponseTest1, IcreateFormDTO, IupdateFormDTO } from '@commons/interfaces/test1.interface';
-import { Test1Query } from './test1.query';
+import { Test1Query } from './test1-query/test1.query';
 import { Test1Service } from './test1.service';
-import { Test1State } from './test1.store';
+import { Test1State } from './test1-store/test1.store';
 
 import { Test1Modal } from './test1-modal/test1-modal.component';
 import { Test1ModalUpdateComponent } from './test1-modal-update/test1-modal-update.component';
 
-
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'test1',
-  templateUrl: './test1.page.html',
+  templateUrl: './test1-template-html/test1.page.html',
 })
 export class Test1Page implements OnInit {
 
@@ -77,37 +76,9 @@ export class Test1Page implements OnInit {
     ).subscribe(result => {});
   }
 
-  // showCreateForm() {
-  //   this.isCreateActivated = true;
-  // }
-
-  // showUpdateForm(test1: IresponseTest1) {
-  //   this.test1ToBeUpdated = {...test1};
-  //   this.isUpdateActivated = true;
-  // }
-
-  // updateTest1(updateForm) {
-  //   console.log('dddd' +updateForm.value);
-  //   console.log('fff' + updateForm.value.campo2);
-  //   this.updateTest1Sub = this.test1Service.updateTest1(
-  //     this.test1ToBeUpdated.id, updateForm.value).subscribe(result => console.log(result)
-  //   );
-  //   this.isUpdateActivated = false;
-  //   this.test1ToBeUpdated = null;
-  // }
-
-  // createTest1(createForm) {
-  //   console.log(createForm.value.campo1);
-  //   console.log(createForm.value.campo2);
-  //   this.createTest1Sub = this.test1Service.createTest1(createForm).subscribe(result => {
-  //     console.log(result);
-  //   });
-  //   this.isCreateActivated = false;
-  //   this.test1ToBeCreated = null;
-  // }
-
   deleteTest1(test1Id: number) {
-    this.deleteTest1Sub = this.test1Service.deleteTest1(test1Id).subscribe(result => {
+    this.deleteTest1Sub = this.test1Service.deleteTest1(test1Id)
+      .subscribe(result => {
       console.log(result);
     });
   }
@@ -126,6 +97,8 @@ export class Test1Page implements OnInit {
     }
   }
 
-
+  logOut() {
+    this.test1Service.logOut();
+  }
 
 }
