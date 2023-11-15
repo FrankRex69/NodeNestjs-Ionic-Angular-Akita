@@ -3,7 +3,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Test1 } from './modu/entities/test1/test1.entity';
 import { ModuModule } from './modu/modu.module';
 import * as dotenv from 'dotenv';
-import { User } from './modu/entities/user/user.entity';
 import { AuthModule } from './modu/entities/auth/auth.module';
 
 dotenv.config();
@@ -31,7 +30,7 @@ console.log('DB_HOST: ' + _.DB_HOST);
       username: _.DB_USER,
       password: _.DB_PASSWORD,
       schema: _.DB_SCHEMA,
-      entities: [Test1, User],
+      entities: [Test1],
       synchronize: true,
       autoLoadEntities: true,
       logging: true,
