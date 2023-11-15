@@ -26,14 +26,14 @@ export class Test1Controller {
   @Inject(Test1Service) public readonly service: Test1Service;  
 
   
-  @Roles(Role.Customer)
+  @Roles(Role.Admin)
   @UseGuards(RoleGuard)
   @Get()
   public async findAll(): Promise<IresponseTest1[]> {
-    const prg = await this.service.findAll();
-    return prg;
+    return await this.service.findAll();
   }
 
+  @Roles(Role.Admin)
   @Get(':id')
   findOne(@Param('id', ParseIntPipe) id: number): Promise<IresponseTest1> {
     return this.service.findOne(id);
@@ -46,13 +46,14 @@ export class Test1Controller {
     return this.service.create(dto);
   }
 
-  @Roles(Role.Customer)
+  @Roles(Role.Admin)
   @UseGuards(RoleGuard)
   @Patch(':id')  
   update(@Param('id', ParseIntPipe) id: number,@Body() dto: UpdateTest1Dto): Promise<UpdateTest1Dto> {
     return this.service.update(id, dto);
   } 
 
+  @Roles(Role.Admin)
   @Delete(':id')  
   remove(@Param('id', ParseIntPipe) id: number): Promise<IresponseTest1> {   
     return this.service.remove(id);

@@ -43,8 +43,10 @@ export class LoginService {
       Authorization: `Bearer ${token}`
       }})
       .then(response => {
-        localStorage.setItem('access_token', response.data.access_token);
-        this.router.navigate(['/test1']);
+        if(response.data.status===200){
+          localStorage.setItem('access_token', response.data.access_token);
+          this.router.navigate(['/test1']);
+        }
       })
       .catch(error => {
         console.error(error);

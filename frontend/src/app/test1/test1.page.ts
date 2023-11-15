@@ -77,7 +77,8 @@ export class Test1Page implements OnInit {
   }
 
   deleteTest1(test1Id: number) {
-    this.deleteTest1Sub = this.test1Service.deleteTest1(test1Id).subscribe(result => {
+    this.deleteTest1Sub = this.test1Service.deleteTest1(test1Id)
+      .subscribe(result => {
       console.log(result);
     });
   }
@@ -99,7 +100,5 @@ export class Test1Page implements OnInit {
   logOut() {
     this.test1Service.logOut();
   }
-
-
 
 }

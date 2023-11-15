@@ -33,14 +33,20 @@ import {
     getLoginToken(): Promise<GetAuthTokenDto> {
       return this.service.signInLogin();
     }
+
+    // @Public()
+    // @Get('getLoginToken')
+    // getLoginToken(): Promise<GetAuthTokenDto> {
+    //   return this.service.signInLogin();
+    // }
     
     @UseGuards(AuthGuard)
     @HttpCode(HttpStatus.OK)
     @Post('checkLoginToken')
     async getAccessToken(@Body() dataBody: ReadAuthDto): Promise<ReadAuthTokenDto | String> {
-      try {
-        return await this.service.signIn(dataBody);
-      } catch (error) {
+      try {        
+        return await this.service.signIn(dataBody);      
+      } catch (error) {       
         console.log("error");
       }
     }

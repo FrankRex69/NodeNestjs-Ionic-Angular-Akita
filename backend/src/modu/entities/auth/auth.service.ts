@@ -28,10 +28,14 @@ export class AuthService {
       const username = await this.usersService.findOne(signInData.userLogin);      
       
       if (username?.password !== signInData.passLogin) {              
-        throw new UnauthorizedException();      
+        return {
+          status: 401,  
+          access_token: '',
+        };    
       }
       const payload = { username: signInData.userLogin, password: signInData.passLogin, role: username.role };      
-      return {        
+      return {
+        status: 200,  
         access_token: await this.jwtService.signAsync(payload),
       };
     } catch (error) {

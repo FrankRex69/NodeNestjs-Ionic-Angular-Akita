@@ -10,14 +10,11 @@ import { LoginService } from './login.service';
 })
 export class LoginPage implements OnInit {
 
-  constructor(
-    private loginService: LoginService,
-  ) {}
+  constructor(private loginService: LoginService) {}
 
   ngOnInit() {
     this.loginService.getLoginToken();
   }
-
 
   async checkLogin(loginForm: { value: IresponseLogin }){
     const credentialLogin = {
@@ -26,6 +23,5 @@ export class LoginPage implements OnInit {
     };
     console.log(await this.loginService.checkLoginService(credentialLogin));
   }
-
 
 }
