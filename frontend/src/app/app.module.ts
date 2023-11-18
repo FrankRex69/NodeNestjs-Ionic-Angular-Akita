@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { LoginPageModule } from './login/login.module';
-import { Test1PageModule } from './test1/test1.module';
+import { ListItemPageModule } from './list-item/list-item.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,7 +16,7 @@ import { Test1PageModule } from './test1/test1.module';
   imports: [
     BrowserModule,
     LoginPageModule,
-    Test1PageModule,
+    ListItemPageModule,
     IonicModule.forRoot(),
     AppRoutingModule
   ],

@@ -38,14 +38,17 @@ export class LoginService {
   // --- POST
   async checkLoginService(credentialLogin: any) {
     const token = localStorage.getItem('login_token');
+    console.log('11: ', credentialLogin);
+    console.log('22: ', token);
     axios.post(`${environment.apiUrl}/auth/checkLoginToken`, credentialLogin, { headers: {
       // eslint-disable-next-line @typescript-eslint/naming-convention
       Authorization: `Bearer ${token}`
       }})
       .then(response => {
+        console.log('wrwr: ', response);
         if(response.data.status===200){
           localStorage.setItem('access_token', response.data.access_token);
-          this.router.navigate(['/test1']);
+          this.router.navigate(['/list-item']);
         }
       })
       .catch(error => {

@@ -5,7 +5,7 @@ import { ListItemPage } from './list-item.page';
 
 const routes: Routes = [
   {
-    path: 'list-item-page',
+    path: 'list-item',
     component: ListItemPage
   }
 ];
