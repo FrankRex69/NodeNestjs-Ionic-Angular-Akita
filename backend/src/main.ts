@@ -28,19 +28,40 @@ async function bootstrap() {
     .setVersion('1.0')
     .addBearerAuth(
       {
-        type: 'http',
-        scheme: 'bearer',
-        bearerFormat: 'JWT',
-        name: 'JWT',
-        description: 'Enter JWT token',
-        in: 'header',
+        // type: 'http',
+        // scheme: 'bearer',
+        // bearerFormat: 'JWT',
+        // name: 'JWT',
+        // description: 'Enter JWT token',
+        // in: 'header',
+
+        // I was also testing it without prefix 'Bearer ' before the JWT
+        description: `[just text field] Please enter token in following format: Bearer <JWT>`,
+        name: 'Authorization',
+        bearerFormat: 'Bearer', // I`ve tested not to use this field, but the result was the same
+        scheme: 'Bearer',
+        type: 'http', // I`ve attempted type: 'apiKey' too
+        in: 'Header'
       },
-      'JWT',
+      'access-token',
     )
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api/swagger', app, document);
+  // SwaggerModule.setup('api/swagger', app, document);
+
+  // SwaggerModule.setup('api/swagger', app, document, {
+  //   swaggerOptions: {
+  //     persistAuthorization: true,
+  //   },
+  // });
+
+
+  SwaggerModule.setup('api/swagger', app, document, {
+    swaggerOptions: {
+      security: [{ 'JWT': [] }],
+    },
+  });
 
   //----------------------------------------------------------------------------------------------------------
   //----------------------------------------------------------------------------------------------------------

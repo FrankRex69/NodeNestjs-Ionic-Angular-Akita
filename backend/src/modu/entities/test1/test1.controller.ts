@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Inject, Param, ParseIntPipe, Patch, Post, UseGuards } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 import { Test1 } from './test1.entity';
 
@@ -24,37 +24,44 @@ console.log('sssss' , Role.Admin);
 export class Test1Controller {  
   
   @Inject(Test1Service) public readonly service: Test1Service;  
-
   
-  @Roles(Role.Admin)
-  @UseGuards(RoleGuard)
   @Get()
+  @ApiBearerAuth('access-token')
+  @UseGuards(RoleGuard)
+  @Roles(Role.Admin)  
   public async findAll(): Promise<IresponseTest1[]> {
     return await this.service.findAll();
   }
 
-  @Roles(Role.Admin)
+  
   @Get(':id')
+  @ApiBearerAuth('access-token')
+  @UseGuards(RoleGuard)
+  @Roles(Role.Admin)
   findOne(@Param('id', ParseIntPipe) id: number): Promise<IresponseTest1> {
     return this.service.findOne(id);
   }  
   
-  @Roles(Role.Admin)
-  @UseGuards(RoleGuard)
   @Post()
+  @ApiBearerAuth('access-token')
+  @UseGuards(RoleGuard)
+  @Roles(Role.Admin)  
   create(@Body() dto: CreateTest1Dto): Promise<CreateTest1Dto> {
     return this.service.create(dto);
   }
 
-  @Roles(Role.Admin)
+  @Patch(':id')
+  @ApiBearerAuth('access-token')
   @UseGuards(RoleGuard)
-  @Patch(':id')  
+  @Roles(Role.Admin)     
   update(@Param('id', ParseIntPipe) id: number,@Body() dto: UpdateTest1Dto): Promise<UpdateTest1Dto> {
     return this.service.update(id, dto);
   } 
 
-  @Roles(Role.Admin)
-  @Delete(':id')  
+  @Delete(':id')
+  @ApiBearerAuth('access-token')
+  @UseGuards(RoleGuard)
+  @Roles(Role.Admin)  
   remove(@Param('id', ParseIntPipe) id: number): Promise<IresponseTest1> {   
     return this.service.remove(id);
   }
