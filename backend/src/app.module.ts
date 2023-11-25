@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ListItem } from './modu/entities/list-item/list-item.entity';
-import { ModuModule } from './modu/modu.module';
-import * as dotenv from 'dotenv';
-import { AuthModule } from './modu/entities/auth/auth.module';
 
+import { ModuModule } from './modu/modu.module';
+
+import { AuthModule } from './modu/auth/auth.module';
+
+import * as dotenv from 'dotenv';
 dotenv.config();
 
 const _ = {
@@ -18,9 +19,9 @@ const _ = {
 
 console.log('DB_HOST: ' + _.DB_HOST);
 
-
 @Module({
   imports: [
+    AuthModule,
     ModuModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
@@ -30,12 +31,11 @@ console.log('DB_HOST: ' + _.DB_HOST);
       username: _.DB_USER,
       password: _.DB_PASSWORD,
       schema: _.DB_SCHEMA,
-      entities: [ListItem],
+      entities: [],
       synchronize: true,
       autoLoadEntities: true,
       logging: true,
     }),
-    AuthModule,
     // TypeOrmModule.forRoot({
     //   type: 'mysql',
     //   host: 'localhost',

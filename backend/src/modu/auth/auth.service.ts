@@ -3,7 +3,6 @@ import { JwtService } from '@nestjs/jwt';
 
 import { ReadAuthDto } from './dto/read-auth.dto';
 import { GetAuthTokenDto, ReadAuthTokenDto } from './dto/read-auth-token.dto';
-import { Auth } from './entity-file/auth.entity';
 
 import { UsersService } from '../users/users.service';
 
