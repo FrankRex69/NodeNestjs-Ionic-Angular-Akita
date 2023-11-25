@@ -1,28 +1,28 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IresponseTest1 } from '@commons/interfaces/test1.interface';
+import { IresponseListItem } from '@commons/interfaces/list-item.interface';
 import { ModalController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
-import { Test1Service } from '../test1.service';
+import { ListItemService } from '../list-item.service';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
-  selector: 'test1.modal',
-  templateUrl: './test1-modal.component.html',
-  styleUrls: ['./test1-modal.component.scss'],
+  selector: 'list-item.modal',
+  templateUrl: './list-item-modal.component.html',
+  styleUrls: ['./list-item-modal.component.scss'],
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
-export class Test1Modal implements OnInit {
+export class ListItemModal implements OnInit {
 
   modalTitle: string;
   modelId: number;
 
-  createTest1Sub: Subscription;
+  createListItemSub: Subscription;
   isCreateActivated: boolean;
-  test1ToBeCreated: IresponseTest1;
+  listItemToBeCreated: IresponseListItem;
 
   constructor(
     private modalController: ModalController,
-    private test1Service: Test1Service
+    private listItemService: ListItemService
   ) { }
 
   ngOnInit() {}
@@ -32,10 +32,10 @@ export class Test1Modal implements OnInit {
     await this.modalController.dismiss(onClosedData);
   }
 
-  createTest1(createForm) {
+  createListItem(createForm: { value: { campo1: string; campo2: string } }) {
     console.log(createForm.value.campo1);
     console.log(createForm.value.campo2);
-    this.createTest1Sub = this.test1Service.createTest1(createForm).subscribe(result => {});
+    this.createListItemSub = this.listItemService.createListItem(createForm).subscribe((result: any) => {});
     this.closeModal();
   }
 

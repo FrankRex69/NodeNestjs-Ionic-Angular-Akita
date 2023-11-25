@@ -9,16 +9,6 @@ async function bootstrap() {
     cors: true,
   });
 
-  // const app = await NestFactory.create(AppModule);  
-  // app.enableCors({
-  //   origin: [
-  //     'http://localhost:7000/test1',
-  //     'http://localhost:8100',
-  //   ],
-  //   methods: ["GET", "POST"],
-  //   credentials: true,
-  // });
-
   app.use(urlencoded({ extended: true, limit: '50mb' }));
 
   // --- Swagger
@@ -27,20 +17,12 @@ async function bootstrap() {
     .setDescription('Chat Operativa API')
     .setVersion('1.0')
     .addBearerAuth(
-      {
-        // type: 'http',
-        // scheme: 'bearer',
-        // bearerFormat: 'JWT',
-        // name: 'JWT',
-        // description: 'Enter JWT token',
-        // in: 'header',
-
-        // I was also testing it without prefix 'Bearer ' before the JWT
+      {        
         description: `[just text field] Please enter token in following format: Bearer <JWT>`,
         name: 'Authorization',
-        bearerFormat: 'Bearer', // I`ve tested not to use this field, but the result was the same
+        bearerFormat: 'Bearer',
         scheme: 'Bearer',
-        type: 'http', // I`ve attempted type: 'apiKey' too
+        type: 'http',
         in: 'Header'
       },
       'access-token',
@@ -48,15 +30,6 @@ async function bootstrap() {
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  // SwaggerModule.setup('api/swagger', app, document);
-
-  // SwaggerModule.setup('api/swagger', app, document, {
-  //   swaggerOptions: {
-  //     persistAuthorization: true,
-  //   },
-  // });
-
-
   SwaggerModule.setup('api/swagger', app, document, {
     swaggerOptions: {
       security: [{ 'JWT': [] }],

@@ -8,8 +8,8 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'test1',
-    loadChildren: () => import('./test1/test1.module').then( m => m.Test1PageModule),
+    path: 'list-item',
+    loadChildren: () => import('./list-item/list-item.module').then( m => m.ListItemPageModule),
   },
 ];
 

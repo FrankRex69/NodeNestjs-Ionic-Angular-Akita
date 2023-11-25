@@ -1,17 +1,17 @@
 import { Global, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Test1Controller } from './entities/test1/test1.controller';
-import { Test1 } from './entities/test1/test1.entity';
-import { Test1Service } from './entities/test1/test1.service';
+import { ListItemController } from './entities/list-item/list-item.controller';
+import { ListItem } from './entities/list-item/list-item.entity';
+import { ListItemService } from './entities/list-item/list-item.service';
 
 @Global()
 @Module({
   imports: [
     TypeOrmModule.forFeature([
-      Test1
+      ListItem
     ]),
   ],
-  controllers: [Test1Controller],
-  providers: [Test1Service]
+  controllers: [ListItemController],
+  providers: [ListItemService]
 })
 export class ModuModule {}

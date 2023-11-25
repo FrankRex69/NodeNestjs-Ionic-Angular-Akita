@@ -19,9 +19,9 @@ import {
 
   import { AuthService } from './auth.service';
   import { GetAuthTokenDto, ReadAuthTokenDto } from './dto/read-auth-token.dto';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth } from '@nestjs/swagger';
   
-  @ApiTags('Auth')
+  
   @Controller('auth')
   export class AuthController {
 
@@ -35,12 +35,6 @@ import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
       return this.service.signInLogin();
     }
 
-    // @Public()
-    // @Get('getLoginToken')
-    // getLoginToken(): Promise<GetAuthTokenDto> {
-    //   return this.service.signInLogin();
-    // }
-    
     @Post('checkLoginToken')
     @ApiBearerAuth('access-token')
     @UseGuards(AuthGuard)
