@@ -1,8 +1,6 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Inject, Param, ParseIntPipe, Patch, Post, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
-import { ListItem } from './list-item.entity';
-
 import { CreateListItemDto } from './dto/create-list-item.dto';
 import { DeleteListItemDto } from './dto/delete-list-item.dto';
 import { UpdateListItemDto} from './dto/update-list-item.dto';

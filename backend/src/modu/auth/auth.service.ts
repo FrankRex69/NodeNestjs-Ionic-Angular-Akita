@@ -3,7 +3,6 @@ import { JwtService } from '@nestjs/jwt';
 
 import { ReadAuthDto } from './dto/read-auth.dto';
 import { GetAuthTokenDto, ReadAuthTokenDto } from './dto/read-auth-token.dto';
-import { Auth } from './entity-file/auth.entity';
 
 import { UsersService } from '../users/users.service';
 
@@ -28,7 +27,7 @@ export class AuthService {
   async signIn(signInData: ReadAuthDto): Promise<ReadAuthTokenDto | String> {
     try {     
       
-      const username = await this.usersService.findOne(signInData.userLogin);       
+      const username = await this.usersService.findOne(signInData);       
       
       if (username?.password !== signInData.passLogin) {              
         return {

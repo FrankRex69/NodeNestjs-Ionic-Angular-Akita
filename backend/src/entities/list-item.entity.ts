@@ -1,8 +1,8 @@
 import { Column, Entity } from "typeorm";
-import { NumberIdEntity } from '../base/base.entity';
+import { NumberIdEntity } from './base.entity';
 
 @Entity()
-export class Test1 extends NumberIdEntity{
+export class ListItem extends NumberIdEntity{
     
     @Column({nullable: true})
       campo1: string;  
