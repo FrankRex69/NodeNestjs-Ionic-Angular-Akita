@@ -27,7 +27,7 @@ export class AuthService {
   async signIn(signInData: ReadAuthDto): Promise<ReadAuthTokenDto | String> {
     try {     
       
-      const username = await this.usersService.findOne(signInData.userLogin);       
+      const username = await this.usersService.findOne(signInData);       
       
       if (username?.password !== signInData.passLogin) {              
         return {

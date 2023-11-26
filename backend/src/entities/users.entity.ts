@@ -5,8 +5,11 @@ import { NumberIdEntity } from './base.entity';
 export class Users extends NumberIdEntity{
     
     @Column({nullable: true})
-      campo1: string;  
+      username: string;  
 
     @Column({nullable: true})
-      campo2: string; 
+      password: string;
+
+    @Column({nullable: true})
+      role: string; 
 }

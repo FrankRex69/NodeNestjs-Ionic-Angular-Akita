@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { ModuModule } from './modu/modu.module';
-
 import { AuthModule } from './modu/auth/auth.module';
 
 import * as dotenv from 'dotenv';
