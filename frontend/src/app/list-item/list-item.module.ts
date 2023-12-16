@@ -10,6 +10,8 @@ import { ListItemService } from './list-item.service';
 
 import { ListItemModal } from './list-item-modal/list-item-modal.component';
 import { ListItemModalUpdateComponent } from './list-item-modal-update/list-item-modal-update.component';
+import { SignInModal } from '../sign-in/sign-in-modal/sign-in-modal.component';
+
 
 @NgModule({
   imports: [
@@ -19,7 +21,7 @@ import { ListItemModalUpdateComponent } from './list-item-modal-update/list-item
     ListItemPageRoutingModule,
     HttpClientModule
   ],
-  declarations: [ListItemPage, ListItemModal, ListItemModalUpdateComponent],
+  declarations: [ListItemPage, ListItemModal, ListItemModalUpdateComponent, SignInModal],
   providers: [ListItemService],
   exports: [ListItemPage],
   entryComponents: [ ListItemModalUpdateComponent ]
