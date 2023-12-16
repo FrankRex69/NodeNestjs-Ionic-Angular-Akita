@@ -1,16 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 import { IresponseLogin } from '@commons/interfaces/login.interface';
 import { LoginService } from './login.service';
 
+import { SignInModal } from '../sign-in/sign-in-modal/sign-in-modal.component';
+
 @Component({
-  selector: 'app-login',
-  templateUrl: './login-template-html/login.page.html',
-  styleUrls: ['./login-template-html/login.page.scss'],
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: 'login',
+  templateUrl: './login-template-html/login.html',
+  styleUrls: ['./login-template-html/login.scss'],
 })
 export class LoginPage implements OnInit {
 
-  constructor(private loginService: LoginService) {}
+  constructor(
+    private loginService: LoginService,
+    public modalController: ModalController
+  ) {}
 
   ngOnInit() {
     this.loginService.getLoginToken();
@@ -22,6 +29,17 @@ export class LoginPage implements OnInit {
       passLogin: loginForm.value.passLogin
     };
     console.log(await this.loginService.checkLoginService(credentialLogin));
+  }
+
+  // async signIn(){
+  //   this.loginService.signIn();
+  // }
+
+  async openModalSignIn() {
+    const modal = await this.modalController.create({
+      component: SignInModal
+    });
+    return await modal.present();
   }
 
 }

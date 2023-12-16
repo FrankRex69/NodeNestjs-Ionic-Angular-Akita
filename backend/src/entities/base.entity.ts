@@ -1,4 +1,3 @@
-//import { IBaseEntity, INumberIdEntity } from '../../../commons/interfaces/base.interface';
 import { IBaseEntity, INumberIdEntity } from '@commons/interfaces/base.interface';
 import {
     CreateDateColumn,

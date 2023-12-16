@@ -53,4 +53,8 @@ export class LoginService {
       });
   }
 
+  async signIn(){
+    this.router.navigate(['/sign-in']);
+  }
+
 }

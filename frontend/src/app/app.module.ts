@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginPageModule } from './login/login.module';
 import { ListItemPageModule } from './list-item/list-item.module';
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],

@@ -5,6 +5,7 @@ import { ModuModule } from './modu/modu.module';
 import { AuthModule } from './modu/auth/auth.module';
 
 import * as dotenv from 'dotenv';
+import { UsersModule } from './modu/users/users.module';
 dotenv.config();
 
 const _ = {
@@ -22,6 +23,7 @@ console.log('DB_HOST: ' + _.DB_HOST);
   imports: [
     AuthModule,
     ModuModule,
+    UsersModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: _.DB_HOST,

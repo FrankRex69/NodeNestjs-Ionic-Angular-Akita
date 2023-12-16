@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 
 import { Users } from "../../entities/users.entity";
 import { ReadAuthDto } from '../auth/dto/read-auth.dto';
+import { CreateUsersDto } from "./dto/create-users.dto";
 
 // This should be a real class/interface representing a user entity
 export type User = any;
@@ -15,11 +16,14 @@ export class UsersService {
     @InjectRepository(Users) public repository: Repository<Users>,
   ) {}
 
-  async findOne(signInData: ReadAuthDto): Promise<Users> {    
-    
-    console.log('qqqq: ' , await this.repository.findOne({select: ['username','password','role'], where: {username: signInData.userLogin, password: signInData.passLogin}}));
-  
-    return await this.repository.findOne({select: ['username','password','role'], where: {username: signInData.userLogin, password: signInData.passLogin}});
+  async findOne(signInData: ReadAuthDto): Promise<Users> {   
+    return await this.repository.findOne(
+      {select: ['username','password','role'],
+       where: {username: signInData.userLogin, password: signInData.passLogin}
+      });
+  }
 
+  async create(dto: CreateUsersDto): Promise<CreateUsersDto> {
+    return this.repository.save(dto);
   }
 }
