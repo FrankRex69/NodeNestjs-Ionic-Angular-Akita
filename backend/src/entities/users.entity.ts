@@ -10,6 +10,7 @@ export class Users extends NumberIdEntity{
     @Column({nullable: true})
       password: string;
 
-    @Column({nullable: true})
-      role: string; 
+    @Column({default:"admin", nullable: true})
+       role: string;
+      
 }

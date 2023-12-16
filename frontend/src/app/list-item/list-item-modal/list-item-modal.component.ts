@@ -33,8 +33,6 @@ export class ListItemModal implements OnInit {
   }
 
   createListItem(createForm: { value: { campo1: string; campo2: string } }) {
-    console.log(createForm.value.campo1);
-    console.log(createForm.value.campo2);
     this.createListItemSub = this.listItemService.createListItem(createForm).subscribe((result: any) => {});
     this.closeModal();
   }

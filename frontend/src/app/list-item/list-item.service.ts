@@ -72,7 +72,6 @@ export class ListItemService {
     );
   }
 
-
   deleteListItem(listItemId: number): Observable<any> {
     const token = localStorage.getItem('access_token');
     // eslint-disable-next-line @typescript-eslint/naming-convention
