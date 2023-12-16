@@ -17,8 +17,8 @@ export class UsersController {
  
   @Post()
   @ApiBearerAuth('access-token')
-  @UseGuards(RoleGuard)
-  @Roles(Role.Admin)
+  // @UseGuards(RoleGuard)
+  // @Roles(Role.Admin)
   create(@Body() dto: CreateUsersDto): Promise<CreateUsersDto> {
     return this.service.create(dto);
   }

@@ -52,4 +52,6 @@ for connection in pgadmin
 - "Maintenance": "postgres"
 - "username": "postgres"
 - "Password": "developmentChatOperativa"
+for view data in pgadmin
+- Databases --> Schemas --> base --> Tables
 ```

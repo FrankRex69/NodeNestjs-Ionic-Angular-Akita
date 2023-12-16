@@ -10,7 +10,6 @@ import { ListItemService } from './list-item.service';
 
 import { ListItemModal } from './list-item-modal/list-item-modal.component';
 import { ListItemModalUpdateComponent } from './list-item-modal-update/list-item-modal-update.component';
-
 @NgModule({
   imports: [
     CommonModule,

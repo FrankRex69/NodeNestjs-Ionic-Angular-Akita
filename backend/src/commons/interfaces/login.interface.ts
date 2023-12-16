@@ -10,3 +10,8 @@ export interface IresponseLogin {
     passLogin: string;
     role: Role;
 }
+
+export interface IcreateUsersDTO {
+  username: string;
+  password: string;
+}

@@ -1,8 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+
+import { Subscription } from 'rxjs';
 
 import { IresponseListItem } from '@commons/interfaces/list-item.interface';
-import { ModalController } from '@ionic/angular';
-import { Subscription } from 'rxjs';
+import { IcreateUsersDTO } from '@commons/interfaces/login.interface';
+
+
+import { SignInService } from './sign-in.service';
 // import { ListItemService } from '../list-item.service';
 
 @Component({
@@ -23,15 +28,20 @@ export class SignInModal implements OnInit {
 
   constructor(
     private modalController: ModalController,
-    // private listItemService: ListItemService
+    private signInService: SignInService
   ) { }
 
   ngOnInit() {}
 
-  createSignIn(createForm: { value: { username: string; password: string } }) {
+  createSignIn(createForm: any) {
     console.log(createForm.value.username);
     console.log(createForm.value.password);
-    // this.closeModal();
+    const dataCreateForm: IcreateUsersDTO  = {
+      username: createForm.value.username,
+      password: createForm.value.password
+    };
+    this.signInService.createUsers(dataCreateForm);
+    this.closeModal();
   }
 
   async closeModal() {
