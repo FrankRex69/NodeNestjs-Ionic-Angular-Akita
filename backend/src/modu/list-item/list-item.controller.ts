@@ -16,7 +16,7 @@ import { Role } from '@commons/interfaces/login.interface';
 
 
 
-@ApiTags('ListItem')
+@ApiTags('List Item')
 @Controller('list-item')
 export class ListItemController {  
   
@@ -41,7 +41,7 @@ export class ListItemController {
   @Post()
   @ApiBearerAuth('access-token')
   @UseGuards(RoleGuard)
-  @Roles(Role.Admin)  
+  @Roles(Role.Admin)
   create(@Body() dto: CreateListItemDto): Promise<CreateListItemDto> {
     return this.service.create(dto);
   }

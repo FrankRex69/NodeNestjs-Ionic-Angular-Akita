@@ -23,14 +23,6 @@
               label="insert login" 
               placeholder="Login">
             </ion-input>
-            <!-- <input
-              type="text"
-              id="userlogin"
-              name="userlogin"
-              class="form-control"
-              required
-              ngModel
-              style="width: 400px"/> -->
           </ion-item>
         </ion-col>  
         <ion-col size="4"></ion-col> 
@@ -49,25 +41,17 @@
               required
               label="Input password" 
               placeholder="Password">
-            </ion-input>
-            <!-- <input
-              type="text"
-              id="passlogin"
-              name="passlogin"
-              class="form-control"
-              required
-              ngModel
-              style="width: 400px"/> -->
-            
+            </ion-input>           
           </ion-item>
         </ion-col>  
         <ion-col size="4"></ion-col> 
       </ion-row>
       <ion-row>
         <ion-col size="5"></ion-col>
-        <ion-col>
-          <!-- <ion-button (click)="checkLogin()" color="success">Login</ion-button> -->
-          <ion-button type="submit" color="success">Login</ion-button>    
+        <ion-col>          
+          <ion-button type="submit" color="success">Login</ion-button>
+          <!-- <ion-button color="medium" (click)="signIn()">SignIn</ion-button> -->
+          <ion-button (click)="openModalSignIn()" color="medium">SignIn</ion-button>
         </ion-col>  
         <ion-col size="4"></ion-col> 
       </ion-row>
