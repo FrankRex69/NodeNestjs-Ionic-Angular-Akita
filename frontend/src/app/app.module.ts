@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { LoginPageModule } from './login/login.module';
 import { ListItemPageModule } from './list-item/list-item.module';
+import { UsersPageModule } from './users/users.module';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { ListItemPageModule } from './list-item/list-item.module';
     BrowserModule,
     LoginPageModule,
     ListItemPageModule,
+    UsersPageModule,
     IonicModule.forRoot(),
     AppRoutingModule
   ],

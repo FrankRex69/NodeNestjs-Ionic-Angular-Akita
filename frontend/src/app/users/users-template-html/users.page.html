@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>users</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>  
+  <ion-grid> 
+    <ion-row>
+      <ion-col>
+        <div>ID</div>
+      </ion-col>
+      <ion-col>
+        <div>Creation data</div>
+      </ion-col>
+      <ion-col> 
+        <div>Last update data</div>
+      </ion-col>
+      <ion-col>
+        <div>Delete data</div>
+      </ion-col>
+      <ion-col>
+        <div>Username</div>
+      </ion-col>
+      <ion-col>
+        <div>Password</div>
+      </ion-col>
+      <ion-col>
+        <div>Role</div>
+      </ion-col>      
+    </ion-row>
+    <ion-row *ngFor="let user of users$ | async">
+      <ion-col>
+        <div>{{ user.id }}</div>
+      </ion-col>
+      <ion-col>
+        <div>{{ user.createdAt }}</div>
+      </ion-col>
+      <ion-col>
+        <div>{{ user.updatedAt }}</div>
+      </ion-col>
+      <ion-col>
+        <div>{{ user.deletedAt }}</div>
+      </ion-col>
+      <ion-col>
+        <div>{{ user.username }}</div>
+      </ion-col>
+      <ion-col>
+        <div>{{ user.password }}</div>
+      </ion-col>
+      <ion-col>
+        <div>{{ user.role }}</div>
+      </ion-col>      
+    </ion-row>
+  </ion-grid>
+  </ion-content>

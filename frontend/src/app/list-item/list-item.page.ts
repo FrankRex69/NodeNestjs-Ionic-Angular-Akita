@@ -4,10 +4,12 @@ import { Observable, Subscription } from 'rxjs';
 import { filter, switchMap } from 'rxjs/operators';
 import { ModalController } from '@ionic/angular';
 
-import { IresponseListItem, IcreateFormDTO, IupdateFormDTO } from '@commons/interfaces/list-item.interface';
-import { ListItemQuery } from './list-item-query/list-item.query';
-import { ListItemService } from './list-item.service';
+import { IresponseListItem } from '@commons/interfaces/list-item.interface';
+
 import { ListItemState } from './list-item-store/list-item.store';
+import { ListItemQuery } from './list-item-query/list-item.query';
+
+import { ListItemService } from './list-item.service';
 
 import { ListItemModal } from './list-item-modal/list-item-modal.component';
 import { ListItemModalUpdateComponent } from './list-item-modal-update/list-item-modal-update.component';

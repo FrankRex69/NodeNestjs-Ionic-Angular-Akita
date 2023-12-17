@@ -10,6 +10,10 @@ const routes: Routes = [
   {
     path: 'list-item',
     loadChildren: () => import('./list-item/list-item.module').then( m => m.ListItemPageModule),
+  },
+  {
+    path: 'users',
+    loadChildren: () => import('./users/users.module').then( m => m.UsersPageModule)
   }
 ];
 

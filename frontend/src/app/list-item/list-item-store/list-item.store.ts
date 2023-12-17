@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable prefer-arrow/prefer-arrow-functions */
 import { Injectable } from '@angular/core';
-import { IresponseListItem } from '@commons/interfaces/list-item.interface';
+
 import { EntityStore, StoreConfig } from '@datorama/akita';
 import { EntityState } from '@datorama/akita/src/lib/types';
+
+import { IresponseListItem } from '@commons/interfaces/list-item.interface';
 
 export interface ListItemState extends EntityState<IresponseListItem, number> {
   areListItemsLoaded: boolean;

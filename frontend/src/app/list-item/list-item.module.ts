@@ -5,8 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ListItemPage } from './list-item.page';
-import { ListItemPageRoutingModule } from './list-item-routing.module';
 import { ListItemService } from './list-item.service';
+import { ListItemPageRoutingModule } from './list-item-routing.module';
 
 import { ListItemModal } from './list-item-modal/list-item-modal.component';
 import { ListItemModalUpdateComponent } from './list-item-modal-update/list-item-modal-update.component';

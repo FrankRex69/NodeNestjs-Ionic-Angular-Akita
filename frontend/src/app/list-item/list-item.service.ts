@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { catchError, map, take, tap } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 
+import { IresponseListItem } from '@commons/interfaces/list-item.interface';
 import { ListItemStore } from './list-item-store/list-item.store';
-import { IcreateFormDTO, IresponseListItem } from '@commons/interfaces/list-item.interface';
 import { environment } from '../../environments/environment';
-import { Router } from '@angular/router';
-
 
 @Injectable()
 export class ListItemService {
@@ -26,12 +25,10 @@ export class ListItemService {
     this.store = store;
   }
 
-
   getAllListItems(): Observable<IresponseListItem[]> {
     const accessToken = localStorage.getItem('access_token');
     // eslint-disable-next-line @typescript-eslint/naming-convention
     const headers = { Authorization: 'Bearer ' + accessToken};
-    console.log('headers: ' , headers);
 
     return this.http.get<IresponseListItem[]>(`${environment.apiUrl}/list-item/`, { headers }).pipe(
       tap(listItem => {

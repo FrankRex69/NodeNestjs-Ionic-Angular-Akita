@@ -16,6 +16,16 @@ export class UsersService {
     @InjectRepository(Users) public repository: Repository<Users>,
   ) {}
 
+  async findAll(): Promise<Users[]> {
+      return this.repository.find(
+      {
+        order: {         
+          id: "ASC"
+        }
+      }
+    );
+  }
+
   async findOne(signInData: ReadAuthDto): Promise<Users> {   
     return await this.repository.findOne(
       {select: ['username','password','role'],

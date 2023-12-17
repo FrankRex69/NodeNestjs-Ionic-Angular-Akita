@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 import { CreateListItemDto } from './dto/create-list-item.dto';
 import { DeleteListItemDto} from './dto/delete-list-item.dto';
 import { UpdateListItemDto } from './dto/update-list-item.dto';
-import {ListItem } from '../../entities/list-item.entity';
+import { ListItem } from '../../entities/list-item.entity';
 
 @Injectable()
 export class ListItemService {
