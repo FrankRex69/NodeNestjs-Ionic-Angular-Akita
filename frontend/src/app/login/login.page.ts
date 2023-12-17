@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
-import { IresponseLogin } from '@commons/interfaces/login.interface';
+import { IresponseUser } from '@commons/interfaces/users.interface';
 import { LoginService } from './login.service';
 
 import { SignInModal } from '../sign-in/sign-in-modal/sign-in-modal.component';
@@ -23,17 +23,13 @@ export class LoginPage implements OnInit {
     this.loginService.getLoginToken();
   }
 
-  async checkLogin(loginForm: { value: IresponseLogin }){
+  async checkLogin(loginForm: { value: IresponseUser }){
     const credentialLogin = {
-      userLogin: loginForm.value.userLogin,
-      passLogin: loginForm.value.passLogin
+      userLogin: loginForm.value.username,
+      passLogin: loginForm.value.password
     };
     console.log(await this.loginService.checkLoginService(credentialLogin));
   }
-
-  // async signIn(){
-  //   this.loginService.signIn();
-  // }
 
   async openModalSignIn() {
     const modal = await this.modalController.create({

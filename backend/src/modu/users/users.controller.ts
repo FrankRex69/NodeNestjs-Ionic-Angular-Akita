@@ -8,8 +8,7 @@ import { UsersService } from './users.service';
 
 import { Roles } from '../auth/decorators/roles.decorator';
 import { RoleGuard } from '../auth/roles.guard';
-import { Role } from '@commons/interfaces/login.interface';
-
+import { Role } from '@commons/interfaces/users.interface';
 
 @ApiTags('Users')
 @Controller('users')

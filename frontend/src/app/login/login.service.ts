@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { IresponseLogin } from '@commons/interfaces/login.interface';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 import axios from 'axios';
-import { Observable, throwError } from 'rxjs';
-import { catchError, take, tap } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
 

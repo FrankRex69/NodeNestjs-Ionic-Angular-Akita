@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import axios from 'axios';
 
-import { IcreateUsersDTO } from '@commons/interfaces/login.interface';
+import { IcreateUsersDTO } from '@commons/interfaces/users.interface';
 import { environment } from 'src/environments/environment';
 
 

@@ -12,9 +12,7 @@ import { Public } from '../auth/decorators/public.decorator';
 import { AuthGuard } from '../auth/auth.guard';
 import { RoleGuard } from '../auth/roles.guard';
 import { Roles } from '../auth/decorators/roles.decorator';
-import { Role } from '@commons/interfaces/login.interface';
-
-
+import { Role } from '@commons/interfaces/users.interface';
 
 @ApiTags('List Item')
 @Controller('list-item')

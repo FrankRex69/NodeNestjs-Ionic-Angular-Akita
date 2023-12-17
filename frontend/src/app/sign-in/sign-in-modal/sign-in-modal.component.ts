@@ -4,7 +4,7 @@ import { ModalController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 
 import { IresponseListItem } from '@commons/interfaces/list-item.interface';
-import { IcreateUsersDTO } from '@commons/interfaces/login.interface';
+import { IcreateUsersDTO } from '@commons/interfaces/users.interface';
 
 
 import { SignInService } from './sign-in.service';
