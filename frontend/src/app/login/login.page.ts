@@ -28,7 +28,7 @@ export class LoginPage implements OnInit {
       userLogin: loginForm.value.username,
       passLogin: loginForm.value.password
     };
-    console.log(await this.loginService.checkLoginService(credentialLogin));
+    await this.loginService.checkLoginService(credentialLogin);
   }
 
   async openModalSignIn() {

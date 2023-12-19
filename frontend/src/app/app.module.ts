@@ -13,7 +13,7 @@ import { UsersPageModule } from './users/users.module';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent ],
   entryComponents: [],
   imports: [
     BrowserModule,

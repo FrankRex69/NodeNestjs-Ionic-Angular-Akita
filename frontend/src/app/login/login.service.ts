@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { AlertController } from '@ionic/angular';
 
 import axios from 'axios';
 
@@ -14,7 +15,8 @@ export class LoginService {
 
   constructor(
     http: HttpClient,
-    private router: Router
+    private router: Router,
+    public alertController: AlertController
     ) {
     this.http = http;
   }
@@ -42,7 +44,9 @@ export class LoginService {
       .then(response => {
         if(response.data.status===200){
           localStorage.setItem('access_token', response.data.access_token);
-          this.router.navigate(['/list-item']);
+          this.router.navigate(['/home']);
+        } else {
+          this.openAlert();
         }
       })
       .catch(error => {
@@ -52,6 +56,16 @@ export class LoginService {
 
   async signIn(){
     this.router.navigate(['/sign-in']);
+  }
+
+  private async openAlert() {
+    const alert = await this.alertController.create({
+      // header: 'Alert',
+      // subHeader: 'Important message',
+      message: 'Username/Password not correct',
+      buttons: ['OK'],
+    });
+    await alert.present();
   }
 
 }

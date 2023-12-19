@@ -18,6 +18,7 @@ import { ListItemModalUpdateComponent } from './list-item-modal-update/list-item
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'list-item',
   templateUrl: './list-item-template-html/list-item.page.html',
+  styleUrls: ['./list-item-template-html/list-item.page.scss'],
 })
 export class ListItemPage implements OnInit {
 

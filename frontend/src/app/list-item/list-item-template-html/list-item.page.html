@@ -5,23 +5,21 @@
         <ion-title>PAGE LIST ITEM</ion-title>
       </ion-col>
       <ion-col size="2">
-        <ion-button (click)="logOut()"color="danger">LogOut</ion-button>
+        <ion-button expand="block" (click)="openModal()">Create
+          <ion-icon slot="end" name="star"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button (click)="logOut()" color="danger">LogOut</ion-button>
       </ion-col>
     </ion-row>
   </ion-toolbar>
 </ion-header>
 <ion-content>  
-<ion-grid>
+<ion-grid>    
   <ion-row>
-    <ion-col>
-      <ion-button expand="block" (click)="openModal()">Create
-        <ion-icon slot="end" name="star"></ion-icon>
-      </ion-button> 
-    </ion-col>
-  </ion-row>  
-  <ion-row>
-    <ion-col>
-      <div size="2">ID</div>
+    <ion-col size="0.5">
+      <div>ID</div>
     </ion-col>
     <ion-col size="2">
       <div>CAMPO 1</div>
@@ -29,13 +27,13 @@
     <ion-col size="4"> 
       <div>CAMPO 2</div>
     </ion-col>
-    <ion-col size="2">      
+    <ion-col size="2">
     </ion-col>
-    <ion-col size="2">      
+    <ion-col size="2">
     </ion-col>
   </ion-row>
   <ion-row *ngFor="let listItem of listItems$ | async">
-    <ion-col size="2">
+    <ion-col size="0.5">
       <div>{{ listItem.id }}</div>
     </ion-col>
     <ion-col size="2">
