@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Test1 } from './modu/entities/test1/test1.entity';
-import { ModuModule } from './modu/modu.module';
-import * as dotenv from 'dotenv';
-import { User } from './modu/entities/user/user.entity';
-import { ProvaGenerale } from './modu/entities/prova-generale/entities/prova-generale.entity';
 
+import { ModuModule } from './modu/modu.module';
+import { AuthModule } from './modu/auth/auth.module';
+
+import * as dotenv from 'dotenv';
+import { UsersModule } from './modu/users/users.module';
 dotenv.config();
 
 const _ = {
@@ -19,10 +19,11 @@ const _ = {
 
 console.log('DB_HOST: ' + _.DB_HOST);
 
-
 @Module({
   imports: [
+    AuthModule,
     ModuModule,
+    UsersModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: _.DB_HOST,
@@ -31,7 +32,7 @@ console.log('DB_HOST: ' + _.DB_HOST);
       username: _.DB_USER,
       password: _.DB_PASSWORD,
       schema: _.DB_SCHEMA,
-      entities: [Test1, User, ProvaGenerale],
+      entities: [],
       synchronize: true,
       autoLoadEntities: true,
       logging: true,

@@ -7,23 +7,19 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { LoginPageModule } from './login/login.module';
+import { ListItemPageModule } from './list-item/list-item.module';
+import { UsersPageModule } from './users/users.module';
 
-import { Test1Page } from './test1/test1.page';
-import { Test1PageModule } from './test1/test1.module';
-
-const routes = [
-  {
-    path: 'test1',
-    component: Test1Page
-  }
-];
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent ],
   entryComponents: [],
   imports: [
     BrowserModule,
-    Test1PageModule,
+    LoginPageModule,
+    ListItemPageModule,
+    UsersPageModule,
     IonicModule.forRoot(),
     AppRoutingModule
   ],

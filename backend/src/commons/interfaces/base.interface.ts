@@ -1,10 +1,9 @@
 export interface IBaseEntity {
-    createdAt: Date;
-    updatedAt: Date;
-    deletedAt: Date;
-    version: number;
-  }
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt: Date;
+}
   
-  export interface INumberIdEntity extends IBaseEntity {
-    id: number;
-  }
+export interface INumberIdEntity extends IBaseEntity {
+  id: number;
+}

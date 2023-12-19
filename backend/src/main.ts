@@ -3,8 +3,6 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { urlencoded } from 'express';
 import { AppModule } from './app.module';
 
-
-
 async function bootstrap() {
   
   const app = await NestFactory.create(AppModule, {
@@ -19,28 +17,31 @@ async function bootstrap() {
     .setDescription('Chat Operativa API')
     .setVersion('1.0')
     .addBearerAuth(
-      {
+      {        
+        description: `[just text field] Please enter token in following format: Bearer <JWT>`,
+        name: 'Authorization',
+        bearerFormat: 'Bearer',
+        scheme: 'Bearer',
         type: 'http',
-        scheme: 'bearer',
-        bearerFormat: 'JWT',
-        name: 'JWT',
-        description: 'Enter JWT token',
-        in: 'header',
+        in: 'Header'
       },
-      'JWT',
+      'access-token',
     )
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api/swagger', app, document);
+  SwaggerModule.setup('api/swagger', app, document, {
+    swaggerOptions: {
+      security: [{ 'JWT': [] }],
+    },
+  });
 
   //----------------------------------------------------------------------------------------------------------
   //----------------------------------------------------------------------------------------------------------
   //----------------------------------------------------------------------------------------------------------
     
   const port = 7000;
-  app.listen(port, function () {
-    console.log(`http://localhost:${port}/auth`);
+  app.listen(port, function () {    
     console.log(`http://localhost:${port}/api/swagger`);
   });
 

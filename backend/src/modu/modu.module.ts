@@ -1,25 +1,20 @@
 import { Global, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ProvaGenerale } from './entities/prova-generale/entities/prova-generale.entity';
-import { ProvaGeneraleController } from './entities/prova-generale/prova-generale.controller';
-import { ProvaGeneraleService } from './entities/prova-generale/prova-generale.service';
-import { Test1Controller } from './entities/test1/test1.controller';
-import { Test1 } from './entities/test1/test1.entity';
-import { Test1Service } from './entities/test1/test1.service';
-import { UserController } from './entities/user/user.controller';
-import { User } from './entities/user/user.entity';
-import { UserService } from './entities/user/user.service';
+import { ListItemController } from './list-item/list-item.controller';
+
+import { ListItemService } from './list-item/list-item.service';
+
+import { ListItem } from '../entities/list-item.entity';
+import { Users } from '../entities/users.entity';
+import { UsersService } from './users/users.service';
+import { UsersController } from './users/users.controller';
 
 @Global()
 @Module({
   imports: [
-    TypeOrmModule.forFeature([
-      Test1,
-      User,
-      ProvaGenerale
-    ]),
+    TypeOrmModule.forFeature([ListItem, Users]),
   ],
-  controllers: [Test1Controller,UserController,ProvaGeneraleController],
-  providers: [Test1Service,UserService,ProvaGeneraleService]
+  controllers: [ListItemController, UsersController],
+  providers: [ListItemService, UsersService]
 })
 export class ModuModule {}
