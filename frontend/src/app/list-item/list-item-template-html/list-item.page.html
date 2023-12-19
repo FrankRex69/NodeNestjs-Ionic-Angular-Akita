@@ -1,23 +1,30 @@
 <ion-header>
   <ion-toolbar>
     <ion-row>
-      <ion-col size="2">
-        <ion-title>PAGE LIST ITEM</ion-title>
-      </ion-col>
-      <ion-col size="2">
-        <ion-button expand="block" (click)="openModal()">Create
-          <ion-icon slot="end" name="star"></ion-icon>
-        </ion-button>
-      </ion-col>
-      <ion-col size="2">
-        <ion-button (click)="logOut()" color="danger">LogOut</ion-button>
-      </ion-col>
+      <ion-card>        
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <span>
+                  <span style="font-size: medium;">LIST ITEM<br></span>
+                  <span style="margin-top: 2%">Dashboard</span>                
+                </span>                
+              </ion-col>
+              <ion-col>
+                <ion-button expand="block" (click)="openModal()">Create
+                  <!-- <ion-icon slot="end" name="star"></ion-icon> -->
+                </ion-button>
+                <ion-button (click)="logOut()" color="medium">LogOut</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>        
+      </ion-card>    
     </ion-row>
   </ion-toolbar>
 </ion-header>
 <ion-content>  
-<ion-grid>    
-  <ion-row>
+<ion-grid>
+  <ion-row id="head-dashboard">
     <ion-col size="0.5">
       <div>ID</div>
     </ion-col>

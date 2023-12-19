@@ -6,7 +6,7 @@
 
 <ion-content>  
   <ion-grid> 
-    <ion-row>
+    <ion-row id="row-head">
       <ion-col size="0.25">
         <div>ID</div>
       </ion-col>
@@ -33,7 +33,7 @@
       <ion-col>
       </ion-col>      
     </ion-row>
-    <ion-row *ngFor="let user of users$ | async">
+    <ion-row id="row-content" *ngFor="let user of users$ | async">
       <ion-col size="0.25">
         <div>{{ user.id }}</div>
       </ion-col>
